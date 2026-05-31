@@ -253,6 +253,22 @@ section { padding: 56px 0; }
 }
 .fact small { display: block; color: var(--ink-soft); font-weight: 600; font-size: 0.8rem; }
 
+/* ---- Coding toolkit timeline ---- */
+.toolkit { margin-top: 22px; }
+.toolkit h3 { color: var(--blue-deep); margin: 0 0 4px; }
+.toolkit-note { color: var(--ink-soft); font-size: 0.9rem; margin: 0 0 14px; }
+.toolkit-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.toolkit-list li {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px;
+  background: var(--mist);
+  border-left: 4px solid var(--blue-bright);
+  border-radius: 10px;
+  padding: 11px 15px;
+}
+.tk-date { font-weight: 800; color: var(--blue); font-size: 0.85rem; letter-spacing: 0.5px; min-width: 86px; }
+.tk-tools { color: var(--ink); font-weight: 600; }
+.tk-tools strong { color: var(--blue-deep); font-weight: 800; }
+
 /* ---- Journey timeline ---- */
 .timeline { position: relative; padding-left: 34px; }
 .timeline::before {
