@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claire · Young Coder & Creator</title>
+  <meta name="description" content="Hi, I'm Claire — a Primary 5 student who loves coding, computational thinking, and building apps. Come see what I've made!">
+
+  <!-- Friendly, rounded fonts that match the watercolour feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#journey">My Journey</a>
+        <a href="#apps">My Apps</a>
+        <!-- ↓ Claire: this is your GitHub. All your code lives here. -->
+        <a class="ghub" href="https://github.com/clairehjx" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">✨ Hello, world!</span>
+      <h1>Hi, I'm <span class="name">Claire</span><br>and I build things with code.</h1>
+      <p class="tagline">A Primary 5 student who loves solving puzzles, spotting patterns, and turning ideas into real apps.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#apps">See my apps →</a>
+        <a class="btn btn-ghost" href="https://github.com/clairehjx" target="_blank" rel="noopener">My code on GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">About me</span>
+          <h2>A little about me 💙</h2>
+        </div>
+        <div class="about-grid">
+          <div class="card about-text reveal">
+            <p>Hi! My name is <strong>Claire</strong> and I'm a <strong>Primary 5 student</strong>. I love <strong>problem solving</strong> — that's a fancy way of saying I enjoy breaking big, tricky problems into small steps a computer can follow.</p>
+            <p>When I code, I like to <strong>look for patterns</strong>, figure out the <strong>algorithm</strong> (the recipe of steps), and then watch my idea come to life on the screen. My favourite colour is <strong>blue</strong> and I love <strong>watercolour</strong> art, so I made this whole website feel like a soft blue painting.</p>
+            <p>I build my projects with <strong>Claude Code</strong> as my AI coding partner, and I'm also testing out <strong>Gemini Antigravity 2.0</strong>. I think it's really cool to compare different AI tools and learn what each one is best at — that's part of how I figure things out.</p>
+            <p>This is my little corner of the internet where I keep the apps I build and share my coding adventure. Thanks for visiting! 🎨</p>
+          </div>
+          <div class="facts reveal">
+            <div class="fact"><span class="emoji">🎓</span><div>Primary 5<small>Curious &amp; always learning</small></div></div>
+            <div class="fact"><span class="emoji">🧠</span><div>Problem solving<small>Patterns, steps & solutions</small></div></div>
+            <div class="fact"><span class="emoji">🎨</span><div>Blue & watercolour<small>My favourite colour & art</small></div></div>
+            <div class="fact"><span class="emoji">🤖</span><div>My AI coding tools<small>Claude Code · Gemini Antigravity 2.0</small></div></div>
+            <div class="fact"><span class="emoji">🚀</span><div>Always building<small>New apps coming soon</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section id="journey">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">My coding journey</span>
+          <h2>How my adventure is going 🧭</h2>
+        </div>
+        <div class="timeline">
+          <div class="t-item reveal">
+            <div class="when">THE START</div>
+            <h3>I got curious about how apps work</h3>
+            <p>I started wondering: how do the games and apps on my screen actually <em>know</em> what to do? So I began learning to write code and give the computer instructions, one step at a time.</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="when">MY FIRST APP</div>
+            <h3>Pokémon Coloring Book 🎨</h3>
+            <p>I built a coloring app where you click a Pokémon to paint it. The clever part is the <strong>flood-fill algorithm</strong> — when you click, my code spreads out to every connected pixel of the same colour, just like the paint-bucket tool. I also added an <strong>undo</strong> button and a <strong>watercolour</strong> brush effect!</p>
+            <p class="t-challenge"><b>🧩 The tricky part:</b> when I clicked to colour, the paint kept leaking past the outlines, because the picture had lots of slightly different shades of the same colour. <b>How I solved it:</b> I let the fill accept colours that are <em>close enough</em> instead of exactly the same, and I treated the dark outlines as walls so the paint stops at the lines.</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="when">RIGHT NOW</div>
+            <h3>Learning more &amp; tidying my code</h3>
+            <p>I'm learning to make my websites look modern, keep my projects organised in separate places on GitHub, and explain my ideas clearly — which is a skill all on its own!</p>
+            <p class="t-challenge"><b>🧩 The tricky part:</b> I wanted every page — my homepage and all my apps — to share the exact same watercolour-blue look, but copying the colours into each file got messy and easy to break. <b>How I solved it:</b> I saved all my colours once as reusable variables, so changing one line updates the whole site at once.</p>
+          </div>
+          <div class="t-item reveal">
+            <div class="when">NOW LIVE</div>
+            <h3>A science tutoring tool 🔬</h3>
+            <p>I built a tool that turns real exam questions into friendly PSLE science cheat sheets — connecting what I know about coding with what I'm learning at school.</p>
+            <p class="t-challenge"><b>🧩 The tricky part:</b> the tool sometimes picked questions that weren't really about the topic I asked for, so the cheat sheets had the wrong things on them. <b>How I solved it:</b> I added a checking step that double-checks every question matches the topic before it's allowed onto the cheat sheet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPS ============ -->
+    <section id="apps">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">My apps</span>
+          <h2>Things I've built 🛠️</h2>
+        </div>
+        <div class="apps-grid">
+
+          <!-- App 1: Pokémon Coloring Book -->
+          <article class="app-card reveal">
+            <div class="app-thumb poke">🎨</div>
+            <div class="app-body">
+              <h3>Pokémon Coloring Book</h3>
+              <p>Click any Pokémon to paint it! Built with a real flood-fill algorithm, an undo button, and a dreamy watercolour brush.</p>
+              <div class="chips">
+                <span class="chip">Flood-fill</span>
+                <span class="chip">Canvas</span>
+                <span class="chip">JavaScript</span>
+              </div>
+              <div class="app-actions">
+                <!-- This works on your computer now. After you deploy on Vercel,
+                     swap it for your app's real link, e.g. https://pokemon-coloring-book.vercel.app/ -->
+                <a class="btn btn-primary" href="../pokemon-coloring-book/index.html">Open app →</a>
+                <a class="btn btn-ghost" href="https://github.com/clairehjx/pokemon-coloring-book" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- App 2: Science Tutoring Tool -->
+          <article class="app-card reveal">
+            <div class="app-thumb sci">🔬</div>
+            <div class="app-body">
+              <h3>Science Tutoring Tool</h3>
+              <p>I made a tool that turns real exam questions into friendly PSLE cheat sheets. Pick a topic:</p>
+              <!-- ↓ Claire: these open the cheat sheets next to this folder. After you deploy
+                   science-cheatsheets on Vercel, swap "../science-cheatsheets/" for your live link. -->
+              <ul class="topic-links">
+                <li><a href="../science-cheatsheets/cheatsheet_matter_p4.html">🧪 Matter <span class="lvl">P4</span></a></li>
+                <li><a href="../science-cheatsheets/cheatsheet_heat_p4.html">🔥 Heat <span class="lvl">P4</span></a></li>
+                <li><a href="../science-cheatsheets/cheatsheet_plant_systems_p4.html">🌱 Plant Systems <span class="lvl">P4</span></a></li>
+                <li><a href="../science-cheatsheets/cheatsheet_human_systems_p4.html">🫀 Human Systems <span class="lvl">P4</span></a></li>
+                <li><a href="../science-cheatsheets/cheatsheet_cycles_in_water_p5.html">💧 Cycles in Water <span class="lvl">P5</span></a></li>
+              </ul>
+              <div class="app-actions">
+                <a class="btn btn-primary" href="../science-cheatsheets/index.html">Open all →</a>
+                <a class="btn btn-ghost" href="https://github.com/clairehjx/science-tool" target="_blank" rel="noopener">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- App 3: placeholder for the future -->
+          <article class="app-card reveal">
+            <div class="app-thumb soon">➕</div>
+            <div class="app-body">
+              <h3>More to come!</h3>
+              <p>I'm always thinking of new ideas to build. Check back soon to see what I make next.</p>
+              <div class="chips"><span class="chip">Future project</span></div>
+              <div class="app-actions">
+                <a class="btn btn-ghost" href="https://github.com/clairehjx" target="_blank" rel="noopener">Follow my GitHub</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made with <span class="heart">♥</span> and lots of blue watercolour by <strong>Claire</strong></p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · Building, learning, and thinking one step at a time.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
