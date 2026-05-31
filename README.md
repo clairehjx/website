@@ -4,7 +4,7 @@ My personal website, where I share my coding journey and the apps I build.
 Made with a "Dreamy Watercolor Blue" style because blue is my favourite colour
 and I love watercolour art.
 
-🔗 **Live site:** _(add your Vercel link here after you deploy)_
+🔗 **Live site:** https://claire-hjx.vercel.app
 
 ## What's inside
 
