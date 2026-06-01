@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How my Science Tutoring Tool works · Claire</title>
+  <meta name="description" content="A peek under the hood of Claire's Science Tutoring Tool — the steps it follows, and which AI model and thinking level each step uses, and why.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+
+  <!-- Page-specific styling for the workflow steps & badges (built on the shared blue tokens) -->
+  <style>
+    .wf-hero { padding: 60px 0 24px; }
+    .wf-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); }
+    .back-link { font-weight: 800; color: var(--ink-soft); }
+    .back-link:hover { color: var(--blue-deep); }
+
+    /* Legend: what the thinking levels mean */
+    .legend { margin-bottom: 28px; }
+    .legend h3 { color: var(--blue-deep); margin-bottom: 6px; }
+    .legend p  { color: var(--ink-soft); font-weight: 600; margin-bottom: 14px; }
+    .legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .legend-item {
+      background: var(--mist); border-radius: 14px; padding: 13px 15px;
+      border-left: 4px solid var(--blue-bright);
+    }
+    .legend-item strong { color: var(--blue-deep); }
+    .legend-item small { display: block; color: var(--ink-soft); font-weight: 600; font-size: 0.84rem; margin-top: 2px; }
+
+    /* Step cards laid out on a watercolour timeline */
+    .wf-steps { position: relative; padding-left: 38px; margin-top: 8px; }
+    .wf-steps::before {
+      content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
+      width: 4px; border-radius: 4px; background: linear-gradient(var(--sky), var(--wash));
+    }
+    .wf-step { position: relative; margin-bottom: 22px; }
+    .wf-step:last-child { margin-bottom: 0; }
+    .wf-step::before {
+      content: ""; position: absolute; left: -38px; top: 22px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 32%, var(--blue-bright), var(--blue-deep));
+      box-shadow: 0 0 0 5px rgba(74,144,217,0.16);
+    }
+    .wf-step .num {
+      position: absolute; left: -38px; top: 22px; width: 26px; height: 26px;
+      display: grid; place-items: center; color: #fff; font-weight: 800;
+      font-size: 0.85rem; font-family: 'Fredoka','Nunito',sans-serif; z-index: 2;
+    }
+    .wf-card { background: var(--card); border-radius: 16px; box-shadow: var(--shadow-sm); padding: 18px 20px; }
+    .wf-card h3 { font-size: 1.18rem; color: var(--ink); margin-bottom: 2px; }
+    .wf-file { font-size: 0.82rem; font-weight: 700; color: var(--blue); font-family: 'Fredoka','Nunito',sans-serif; }
+    .wf-what { color: var(--ink-soft); font-weight: 600; margin: 8px 0 12px; }
+
+    /* Model + thinking badges */
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .badge {
+      font-weight: 800; font-size: 0.74rem; padding: 4px 12px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .badge.model { background: var(--mist); color: var(--blue-deep); }
+    .badge.model.img { background: #fdeafc; color: #8a3d80; }
+    .badge.model.none { background: var(--leaf); color: #1f6b4c; }
+    .badge.think::before { content: "🧠"; font-size: 0.85em; }
+    .badge.think.minimal { background: #eef5ff; color: var(--ink-soft); }
+    .badge.think.medium  { background: var(--wash); color: var(--blue-deep); }
+    .badge.think.high    { background: var(--blue); color: #fff; }
+    .badge.think.standard{ background: var(--sky); color: var(--blue-deep); }
+
+    .why { font-size: 0.92rem; font-weight: 600; color: var(--ink-soft);
+           background: var(--paper); border-radius: 10px; padding: 10px 13px; }
+    .why b { color: var(--blue-deep); font-weight: 800; }
+
+    .wf-note { margin-top: 26px; }
+    .wf-note h3 { color: var(--blue-deep); margin-bottom: 6px; }
+    .wf-note p { color: var(--ink-soft); font-weight: 600; }
+    .wf-note p + p { margin-top: 10px; }
+    .wf-note strong { color: var(--blue-deep); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links">
+        <a href="index.html#apps">← Back to my apps</a>
+        <a class="ghub" href="https://github.com/clairehjx/science-tool" target="_blank" rel="noopener">See the code ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">🔬 Under the hood</span>
+      <h1>How my Science<br>Tutoring Tool works</h1>
+      <p class="tagline">My tool turns real exam papers into friendly cheat sheets in a few steps. The neat part: each step uses an AI <strong>thinking level</strong> that matches how hard the job is — fast for the easy bits, deep for the clever bits.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+
+        <!-- Legend -->
+        <div class="card legend reveal">
+          <h3>🧠 What's a "thinking level"?</h3>
+          <p>Newer AI models can choose how hard to think before answering. I pick the level on purpose for each step — more thinking is smarter but slower and costs more, so I save it for the tricky parts.</p>
+          <div class="legend-grid">
+            <div class="legend-item"><strong>Minimal</strong><small>Barely stops to think. Fastest &amp; cheapest — great for simple checking.</small></div>
+            <div class="legend-item"><strong>Medium</strong><small>A balanced amount of thinking for everyday jobs.</small></div>
+            <div class="legend-item"><strong>High</strong><small>Thinks really hard. Saved for the most creative, tricky work.</small></div>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="section-head reveal">
+          <span class="kicker">Step by step</span>
+          <h2>The recipe my tool follows 🧾</h2>
+        </div>
+
+        <div class="wf-steps">
+
+          <div class="wf-step reveal">
+            <span class="num">1</span>
+            <div class="wf-card">
+              <h3>Read the exam papers</h3>
+              <span class="wf-file">pdf_extractor.py</span>
+              <p class="wf-what">It looks at each real exam PDF and pulls out the open-ended questions, their model answers, and any diagrams.</p>
+              <div class="badges">
+                <span class="badge model">Gemini 3.5 Flash</span>
+                <span class="badge think medium">medium thinking</span>
+              </div>
+              <p class="why"><b>Why:</b> This step has to <i>see</i> the page (that's called "vision") and copy the words exactly. I pin it at <b>medium</b> — enough thinking to sort multi-part questions into the right order, but not so much that it starts "improving" the wording instead of copying it.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">2</span>
+            <div class="wf-card">
+              <h3>Check every question</h3>
+              <span class="wf-file">pipeline.py</span>
+              <p class="wf-what">For each question it asks "Does this really match the topic?" and "Is the answer correct?" The bad ones get dropped.</p>
+              <div class="badges">
+                <span class="badge model">Gemini 3.5 Flash</span>
+                <span class="badge think medium">medium thinking</span>
+              </div>
+              <p class="why"><b>Why:</b> This step can <b>drop a question</b> or even <b>rewrite a model answer</b>, so getting it right really matters — and it runs as just <b>one batched call per cheat sheet</b>, so extra thinking is almost free here. I set it to <b>medium</b> so it weighs topic-match and answer-correctness carefully.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">3</span>
+            <div class="wf-card">
+              <h3>Write the cheat sheet</h3>
+              <span class="wf-file">pipeline.py</span>
+              <p class="wf-what">The big one! It turns the questions into the 7 tabs — common mistakes, tricky differences, keywords, answer formulas and the summary.</p>
+              <div class="badges">
+                <span class="badge model">Gemini 3.5 Flash</span>
+                <span class="badge think high">high thinking</span>
+              </div>
+              <p class="why"><b>Why:</b> This is the cleverest, most creative step. Explaining science clearly for a kid, and spotting the exact mistakes and confusions, takes real thought — so I turn thinking all the way up to <b>high</b>.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">4</span>
+            <div class="wf-card">
+              <h3>Add the real question pictures</h3>
+              <span class="wf-file">top_questions_images.py</span>
+              <p class="wf-what">It snips the actual question straight out of the PDF as a picture and puts it on the "Top Questions" tab.</p>
+              <div class="badges">
+                <span class="badge model none">No AI — just code</span>
+                <span class="badge model">Gemini 3.5 Flash (backup)</span>
+              </div>
+              <p class="why"><b>Why:</b> Cutting out a picture at known coordinates is exact maths, so plain code does it — no AI needed, which is faster and free. The AI (vision) only steps in as a <b>backup</b> if a question is hard to find.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">5</span>
+            <div class="wf-card">
+              <h3>Plan the summary picture</h3>
+              <span class="wf-file">image_generator.py</span>
+              <p class="wf-what">It writes a detailed "art brief" describing the big concept picture for the summary tab.</p>
+              <div class="badges">
+                <span class="badge model">Gemini 3.5 Flash</span>
+                <span class="badge think medium">medium thinking</span>
+              </div>
+              <p class="why"><b>Why:</b> Designing a good picture brief needs some thinking, but not the heaviest — so <b>medium</b> is the balanced middle setting.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">6</span>
+            <div class="wf-card">
+              <h3>Draw the picture</h3>
+              <span class="wf-file">image_generator.py</span>
+              <p class="wf-what">It actually draws the watercolour-style summary picture from the brief.</p>
+              <div class="badges">
+                <span class="badge model img">nano-banana · Gemini image model</span>
+              </div>
+              <p class="why"><b>Why:</b> This is the one job that <i>makes pictures</i>, so it uses Google's special image-drawing model instead of the text one. Thinking levels don't apply here.</p>
+            </div>
+          </div>
+
+          <div class="wf-step reveal">
+            <span class="num">7</span>
+            <div class="wf-card">
+              <h3>Make a practice quiz <span style="font-weight:600;color:var(--ink-soft);font-size:0.8rem">(optional)</span></h3>
+              <span class="wf-file">oe_quiz_generator.py</span>
+              <p class="wf-what">It builds a printable practice quiz by picking the hardest questions and cropping them from the PDF.</p>
+              <div class="badges">
+                <span class="badge model">Gemini 3.5 Flash</span>
+                <span class="badge think standard">standard thinking · vision</span>
+              </div>
+              <p class="why"><b>Why:</b> Like step 1, it just needs to <i>see</i> the page and find each question — light work for the fast Flash model.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Closing notes -->
+        <div class="card wf-note reveal">
+          <h3>🛟 What if a model is busy?</h3>
+          <p>If <strong>Gemini 3.5 Flash</strong> is ever too busy to answer, every step automatically falls back to a slightly older model, <strong>Gemini 3 Flash</strong>, so my tool never gets stuck.</p>
+          <h3 style="margin-top:16px">💡 Why one model nearly everywhere?</h3>
+          <p>I use one fast, friendly model — <strong>Gemini 3.5 Flash</strong> — for almost everything, and just change its <strong>thinking level</strong> to match how hard each step is. That keeps the tool quick and affordable, while still thinking hard exactly where it counts.</p>
+        </div>
+
+        <div class="hero-btns reveal" style="margin-top:28px">
+          <a class="btn btn-primary" href="index.html#apps">← Back to my apps</a>
+          <a class="btn btn-ghost" href="https://github.com/clairehjx/science-tool" target="_blank" rel="noopener">See the code on GitHub</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made with <span class="heart">♥</span> and lots of blue watercolour by <strong>Claire</strong></p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · Building, learning, and thinking one step at a time.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
