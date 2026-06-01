@@ -269,6 +269,16 @@ section { padding: 56px 0; }
 .tk-tools { color: var(--ink); font-weight: 600; }
 .tk-tools strong { color: var(--blue-deep); font-weight: 800; }
 
+/* ---- Learn-with-me homepage card ---- */
+.learn-cta { display: flex; gap: 18px; align-items: flex-start; }
+.learn-cta h3 { color: var(--ink); margin-bottom: 4px; }
+.learn-cta-emoji {
+  width: 60px; height: 60px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 1.9rem;
+  background: var(--mist); border-radius: 16px;
+}
+@media (max-width: 560px) { .learn-cta { flex-direction: column; } }
+
 /* ---- Journey timeline ---- */
 .timeline { position: relative; padding-left: 34px; }
 .timeline::before {
