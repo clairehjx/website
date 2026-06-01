@@ -342,6 +342,7 @@ section { padding: 56px 0; }
 .app-thumb.poke { background: radial-gradient(circle at 30% 25%, #cfe8ff, #a8d8ea 70%, #7fc0dd); }
 .app-thumb.sci  { background: radial-gradient(circle at 30% 25%, #d8f0e6, #bfe6d4 70%, #9ed6bd); }
 .app-thumb.soon { background: repeating-linear-gradient(45deg, #eef5ff, #eef5ff 14px, #e3f2fd 14px, #e3f2fd 28px); }
+.app-thumb.shop { background: radial-gradient(circle at 30% 25%, #ffe9c9, #f4a96b 70%, #e89aa5); }
 .app-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
 .app-body h3 { font-size: 1.25rem; color: var(--ink); margin-bottom: 6px; }
 .app-body p { color: var(--ink-soft); font-weight: 600; font-size: 0.95rem; }
