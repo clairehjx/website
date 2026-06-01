@@ -3,7 +3,8 @@
    NOTE: this is light social gating, not real security — the page content is
    still inside the downloaded HTML. It keeps out random/casual visitors, which
    is the "just for friends" goal. Don't reuse this password for anything important.
-   To change the password: replace the base64 below. (atob('cHVwcHk=') === 'puppy')
+   To change the password: base64-encode the new word and replace the token below
+   (e.g. in a browser console: btoa('newword')).
    ─────────────────────────────────────────────────────────────────────────── */
 (function () {
   var KEY = 'claire_friends_unlocked';
