@@ -83,6 +83,14 @@
       border-radius: 8px; padding: 3px 9px; font-size: 0.92rem;
     }
 
+    /* Little scoring table (where the marks come from) */
+    .score-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: clamp(0.78rem, 2.6vw, 0.92rem); }
+    .score-table th, .score-table td { border: 1px solid var(--mist); padding: 7px 9px; text-align: center; }
+    .score-table th { background: var(--mist); color: var(--blue-deep); font-weight: 800; }
+    .score-table th:first-child, .score-table td:first-child { text-align: left; font-weight: 800; color: var(--ink); }
+    .score-table td:last-child { font-family: 'Fredoka','Nunito',sans-serif; font-weight: 700; color: var(--blue-deep); }
+    .score-table tr.win td { background: var(--wash); }
+
     /* Bar-model score visual — pure divs, no images */
     .bar-model { display: flex; flex-direction: column; gap: 8px;
       background: var(--paper); border-radius: 12px; padding: 14px 16px; margin-top: 12px; }
@@ -185,15 +193,19 @@
               <div class="ls-card">
                 <span class="ls-tag">✖️➕ multiply, add, compare</span>
                 <h3>It gives each word points — out of 100</h3>
-                <p>To pick the next word, it lists a few choices and gives each one <strong>points</strong>. Every choice has some <strong>clues</strong>, and each clue has an <strong>importance number</strong> (grown-ups call it a "weight"). You <strong>multiply</strong> each clue by its importance and <strong>add them up</strong>. That's the entire sum.</p>
-                <p>Let's score three choices for <strong>"The cat sat on the ___"</strong> — <strong>mat</strong>, <strong>dog</strong>, <strong>sky</strong>. We have two clues, and each clue's importance is <strong>5</strong>:</p>
-                <p>Clue A — <em>does it fit the word "on"?</em> &nbsp;·&nbsp; Clue B — <em>does it match a sentence about a cat?</em> &nbsp;(each scored out of 10)</p>
-                <p>
-                  <span class="calc">mat: 5×8 + 5×4 = 60</span>
-                  <span class="calc">dog: 5×4 + 5×2 = 30</span>
-                  <span class="calc">sky: 5×1 + 5×1 = 10</span>
-                </p>
-                <p>So <strong>mat</strong> wins — just multiplying and adding, no magic. To compare the scores easily, turn them into <strong>percentages</strong> ("out of 100"). They already add up to <strong>60 + 30 + 10 = 100</strong>, so mat = <strong>60%</strong>, dog = <strong>30%</strong>, sky = <strong>10%</strong>. The highest usually wins, so it picks <strong>mat</strong>.</p>
+                <p>To score a word, it checks the word against a few <strong>clues</strong> and gives each clue a <strong>mark out of 10</strong> — how well the word fits that clue. Each clue also has an <strong>importance number</strong> (grown-ups call it a "weight") that says how much that clue counts. A word's <strong>points = each mark × its clue's importance, all added together</strong>. That's the whole sum.</p>
+                <p>Let's try <strong>"The cat sat on the ___"</strong> with just two clues — and we'll say both clues matter the same, <strong>importance 5</strong>:</p>
+                <p>Clue A — <em>does it fit "sat <strong>on</strong> the…"?</em> &nbsp;·&nbsp; Clue B — <em>does it sound like a sentence about a cat?</em></p>
+                <table class="score-table">
+                  <thead><tr><th>Word</th><th>Clue A mark</th><th>Clue B mark</th><th>Points = 5×A + 5×B</th></tr></thead>
+                  <tbody>
+                    <tr class="win"><td>mat</td><td>8</td><td>4</td><td>5×8 + 5×4 = 60</td></tr>
+                    <tr><td>dog</td><td>4</td><td>2</td><td>5×4 + 5×2 = 30</td></tr>
+                    <tr><td>sky</td><td>1</td><td>1</td><td>5×1 + 5×1 = 10</td></tr>
+                  </tbody>
+                </table>
+                <p>Walk through <strong>mat</strong>: it fits "on" really well, so Clue A scores <strong>8</strong>; it's fairly cat-ish, so Clue B scores <strong>4</strong>. Multiply each mark by the importance (5) and add: <strong>5×8 + 5×4 = 40 + 20 = 60</strong>. Do the same for the others, and <strong>mat</strong> comes out on top. Just multiplying and adding — no magic.</p>
+                <p>To compare the three easily, turn the points into <strong>percentages</strong> ("out of 100"). They already add up to <strong>60 + 30 + 10 = 100</strong>, so mat = <strong>60%</strong>, dog = <strong>30%</strong>, sky = <strong>10%</strong> — and the highest usually wins.</p>
                 <div class="bar-model">
                   <div class="bar-row"><span class="bar-label">mat</span><div class="bar-track"><div class="bar-fill win" style="width:60%">60%</div></div></div>
                   <div class="bar-row"><span class="bar-label">dog</span><div class="bar-track"><div class="bar-fill" style="width:30%">30%</div></div></div>
