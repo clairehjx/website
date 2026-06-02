@@ -72,6 +72,19 @@
     .wf-note p { color: var(--ink-soft); font-weight: 600; }
     .wf-note p + p { margin-top: 10px; }
     .wf-note strong { color: var(--blue-deep); }
+
+    /* "What you do" loop + shop chips */
+    .play-loop { list-style: none; margin: 8px 0 14px; padding: 0; }
+    .play-loop li { position: relative; padding: 5px 0 5px 22px; color: var(--ink-soft); font-weight: 600; }
+    .play-loop li::before { content: "→"; position: absolute; left: 0; color: var(--blue-bright); font-weight: 800; }
+
+    /* The build prompts */
+    .prompts-intro { color: var(--ink-soft); font-weight: 600; margin-bottom: 14px; }
+    .prompts { display: flex; flex-direction: column; gap: 11px; }
+    .prompt { margin: 0; background: var(--mist); border-left: 4px solid var(--blue-bright);
+      border-radius: 12px; padding: 12px 15px; color: var(--ink); font-weight: 700; }
+    .prompt::before { content: "\201C"; color: var(--blue-bright); font-weight: 800; }
+    .prompt::after  { content: "\201D"; color: var(--blue-bright); font-weight: 800; }
   </style>
 </head>
 <body>
@@ -101,6 +114,24 @@
   <main>
     <section>
       <div class="wrap">
+
+        <!-- What you actually do -->
+        <div class="card legend reveal">
+          <h3>What you actually do</h3>
+          <p>There's no score and no winning — it's a cozy hangout. The loop is simple:</p>
+          <ul class="play-loop">
+            <li>Log in and land on the shared street.</li>
+            <li>See which friends are around — their avatars stand outside their shops.</li>
+            <li>Pop into your own shophouse to redecorate and restock.</li>
+            <li>Wander over to a friend's shop and browse their stuff.</li>
+            <li>Trade an item, leave a short note, or drop off a gift.</li>
+            <li>Come back later to see what's changed.</li>
+          </ul>
+          <p>Everyone runs a different kind of shop, so the street feels like a proper little town:</p>
+          <div class="chips">
+            <span class="chip">Bakery</span><span class="chip">Florist</span><span class="chip">Bookshop</span><span class="chip">Bubble Tea</span><span class="chip">Art Studio</span><span class="chip">Pet Shop</span><span class="chip">Sweet Shop</span><span class="chip">Music Shop</span><span class="chip">Toy Shop</span><span class="chip">Garden Shop</span><span class="chip">+ more</span>
+          </div>
+        </div>
 
         <!-- The pieces -->
         <div class="card legend reveal">
@@ -217,6 +248,24 @@
           <h3>The rules I gave myself</h3>
           <p>It's built for a specific group of friends, so I added guardrails on purpose: a <strong>fixed list</strong> of players, <strong>no open chat</strong> (just short notes), and <strong>every change checked on the server</strong> so nothing can be faked.</p>
           <p>And there's <strong>no winning</strong> — no score, no leaderboard. It's just for hanging out, decorating, and trading. That part was the whole point.</p>
+        </div>
+
+        <!-- How I briefed the AI -->
+        <div class="section-head reveal" style="margin-top:34px">
+          <span class="kicker">How I built it</span>
+          <h2>What I told the AI to make</h2>
+        </div>
+        <div class="card reveal">
+          <p class="prompts-intro">I didn't just say "make me a game". I wrote a proper plan first, then handed it to my AI piece by piece. These were the key instructions:</p>
+          <div class="prompts">
+            <blockquote class="prompt">Build a cozy pixel-art game where everyone owns a shophouse on one shared street — decorate your shop, visit friends, trade items, and leave notes. No winning, just vibes.</blockquote>
+            <blockquote class="prompt">Use React, Supabase and Vercel — and draw the pixel art on a Canvas myself. No game engine.</blockquote>
+            <blockquote class="prompt">Keep it private: a fixed list of my friends, no sign-ups. Log in with a name and a secret code, and store the codes hashed — never as plain text.</blockquote>
+            <blockquote class="prompt">No open chat — only short sticky notes (100 characters max), so it stays safe for a group of 11-year-olds.</blockquote>
+            <blockquote class="prompt">Let players trade: I offer one of my items for one of yours; you accept or decline; if you accept, the two items swap automatically.</blockquote>
+            <blockquote class="prompt">Make an avatar creator from preset pixel parts — skin, hair, outfit, accessory — and draw all the sprites in a soft, pastel pixel-art style.</blockquote>
+            <blockquote class="prompt">Make it installable on a phone like a real app, and still playable offline.</blockquote>
+          </div>
         </div>
 
         <div class="hero-btns reveal" style="margin-top:28px">
