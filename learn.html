@@ -6,7 +6,7 @@
   <!-- Friends-only soft password gate (runs before paint) -->
   <script src="gate.js"></script>
   <title>Learn with me · Claire</title>
-  <meta name="description" content="Claire's little lessons corner. Lesson 1: how modern AI tools really work — explained using only PSLE maths (multiplying, adding, percentages, averages and guess-and-check).">
+  <meta name="description" content="Claire's little lessons corner. How modern AI tools really work — and how the different model sizes (and their cost) compare — explained using only PSLE maths.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     .ls-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); }
 
     /* Lesson table of contents */
-    .ls-index { margin-bottom: 30px; }
+    .ls-index { margin-bottom: 30px; scroll-margin-top: 84px; }
     .ls-index h3 { color: var(--blue-deep); margin-bottom: 10px; }
     .ls-toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
     .ls-toc a {
@@ -66,6 +66,7 @@
     .ls-card p { color: var(--ink-soft); font-weight: 600; }
     .ls-card p + p { margin-top: 10px; }
     .ls-card strong { color: var(--blue-deep); }
+    .ls-card a { font-weight: 800; }
 
     /* Little pill naming the maths used in a step */
     .ls-tag {
@@ -103,6 +104,9 @@
     .ls-why h3 { color: var(--blue-deep); margin-bottom: 6px; }
     .ls-why p { color: var(--ink-soft); font-weight: 600; }
     .ls-why b { color: var(--blue-deep); font-weight: 800; }
+
+    /* "Back to contents" link under each lesson */
+    .ls-back { margin-top: 18px; }
 
     .ls-soon { margin-top: 30px; border-left: 5px solid var(--sky); }
     .ls-soon h3 { color: var(--blue-deep); margin-bottom: 4px; }
@@ -144,11 +148,11 @@
       <div class="wrap">
 
         <!-- Lesson index -->
-        <div class="card ls-index reveal">
+        <div class="card ls-index reveal" id="toc">
           <h3>My lessons so far</h3>
           <ul class="ls-toc">
-            <li><a href="#lesson-1"><span class="ls-toc-num">1</span> How do AI tools actually work?</a></li>
-            <li><a href="#lesson-2"><span class="ls-toc-num">2</span> What is an LLM?</a></li>
+            <li><a href="#lesson-1"><span class="ls-toc-num">1</span> How AI works (and what an &ldquo;LLM&rdquo; really is)</a></li>
+            <li><a href="#lesson-2"><span class="ls-toc-num">2</span> What's the difference between models?</a></li>
           </ul>
         </div>
 
@@ -156,11 +160,11 @@
         <article class="lesson" id="lesson-1">
           <div class="section-head reveal">
             <span class="kicker">Lesson 1 · only PSLE maths inside</span>
-            <h2>How do AI tools<br>actually work?</h2>
+            <h2>How AI works (and what<br>an &ldquo;LLM&rdquo; really is)</h2>
           </div>
 
           <div class="card ls-intro reveal">
-            <p>Everyone says AI is super complicated. Mostly it isn't — the heart of it is maths I <strong>already know</strong>: multiplying, adding, percentages, averages, and the <strong>guess-and-check</strong> trick from school. A tool like the one I build with (grown-ups call it a "large language model") is really just a giant <strong>next-word guesser</strong>. Every number below, you can check yourself.</p>
+            <p>Everyone says AI is super complicated. Mostly it isn't — the heart of it is maths I <strong>already know</strong>: multiplying, adding, percentages, averages, and the <strong>guess-and-check</strong> trick from school. A tool like the one I build with is really just a giant <strong>next-word guesser</strong>. Every number below, you can check yourself — and by the end you'll know exactly what those three letters, <strong>LLM</strong>, stand for.</p>
           </div>
 
           <div class="ls-steps">
@@ -247,12 +251,59 @@
               </div>
             </div>
 
+            <!-- Step 7 -->
+            <div class="ls-step reveal">
+              <span class="num">7</span>
+              <div class="ls-card">
+                <span class="ls-tag">🧩 model = a good-enough copy</span>
+                <h3>So what's an "LLM"? Start with M — Model</h3>
+                <p>People throw the word <strong>"LLM"</strong> around like everyone just knows it. It's three words — <strong>Large Language Model</strong> — and you've basically already met it. Start at the end: a <strong>model</strong> is a simplified copy of something real that's still useful — a model aeroplane, or the weather model that guesses if it'll rain. Not the whole thing, just enough to work. An LLM is a <strong>model of how language usually goes</strong> — a copy of the patterns in writing.</p>
+              </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="ls-step reveal">
+              <span class="num">8</span>
+              <div class="ls-card">
+                <span class="ls-tag">📈 large means LARGE</span>
+                <h3>The big L is for Large — and it means it</h3>
+                <p>It's large in two ways: it <strong>learned from a giant pile of writing</strong> — billions of words — and it holds a giant pile of those <strong>importance numbers</strong> from the steps above, <strong>millions to billions</strong> of them.</p>
+                <p>How big is a billion, really? If you read <strong>one word a second</strong> and never stopped to sleep:</p>
+                <p><span class="calc">1,000,000,000 words ÷ 1 per second ≈ 32 YEARS</span></p>
+                <p>…just to read a billion words once. An LLM trains on <em>way</em> more than that. So yes — large.</p>
+              </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="ls-step reveal">
+              <span class="num">9</span>
+              <div class="ls-card">
+                <span class="ls-tag">🧠 put it together</span>
+                <h3>Stick the three words back together</h3>
+                <p>The middle <strong>L is for Language</strong> — it works in <strong>words</strong>: you give it some, it gives some back, exactly the next-word guessing from the steps above. So an LLM is a <strong>Model</strong> (a good-enough copy) of <strong>Language</strong> (words), made <strong>Large</strong> (tons of writing, tons of importance numbers). That's it — the same guesser from Step 1, scaled up enormously. That scale is the whole reason it can write stories, answer questions, and help me code.</p>
+              </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="ls-step reveal">
+              <span class="num">10</span>
+              <div class="ls-card">
+                <span class="ls-tag">⚠️ it doesn't actually KNOW</span>
+                <h3>What it ISN'T</h3>
+                <p>The bit people forget: an LLM doesn't truly <strong>know</strong> facts, and it isn't thinking like a person. It's guessing the most likely-sounding words — which means it can be confidently, cheerfully <strong>WRONG</strong>. (My perpetually cheerful AI "pet" will happily tell me complete nonsense with a straight face.) So I always double-check it. No feelings, no magic — just maths.</p>
+              </div>
+            </div>
+
           </div>
 
           <!-- Closing callout -->
           <div class="card ls-why reveal">
-            <h3>So what does that actually mean?</h3>
-            <p>The maths I learn at school — <b>multiplying, adding, percentages, averages, and guess-and-check</b> — really <i>is</i> the engine inside AI. It's not magic. It's just a LOT of small sums, done very, very fast.</p>
+            <h3>So "AI" and "LLM" aren't magic spells</h3>
+            <p>The maths I learn at school — <b>multiplying, adding, percentages, averages, and guess-and-check</b> — really <i>is</i> the engine inside AI. And "LLM" is just three honest words: a <b>Large</b> <b>Language</b> <b>Model</b>. Same small sums as Step 1, only an absolutely enormous number of them. Clever? Definitely. Magic? No. Actually thinking? Also no.</p>
+          </div>
+
+          <div class="ls-back reveal">
+            <a class="btn btn-ghost" href="#toc">↑ Back to contents</a>
           </div>
         </article>
 
@@ -260,11 +311,11 @@
         <article class="lesson" id="lesson-2">
           <div class="section-head reveal">
             <span class="kicker">Lesson 2 · still only PSLE maths</span>
-            <h2>What is an LLM?</h2>
+            <h2>What's the difference<br>between models?</h2>
           </div>
 
           <div class="card ls-intro reveal">
-            <p>People throw around the word <strong>"LLM"</strong> like everyone's supposed to know what it means. It's just three words — <strong>Large Language Model</strong> — and none of them are scary once you split them up. (Spoiler: it's the same next-word guesser from <a href="#lesson-1">Lesson 1</a>, just… a lot of it.)</p>
+            <p>Claude comes in three sizes — <strong>Haiku, Sonnet, Opus</strong>. Gemini too — <strong>Flash-Lite, Flash, Pro</strong>. (Yes, the names are a lot.) They're not three different kinds of magic — they're the same next-word machine from Lesson 1, built in three sizes. Knowing which one to grab is mostly about one thing: <strong>money</strong>.</p>
           </div>
 
           <div class="ls-steps">
@@ -273,10 +324,14 @@
             <div class="ls-step reveal">
               <span class="num">1</span>
               <div class="ls-card">
-                <span class="ls-tag">🧩 model = a good-enough copy</span>
-                <h3>M is for Model</h3>
-                <p>A <strong>model</strong> is a simplified copy of something real that's still useful — a model aeroplane, or the weather model that guesses if it'll rain. It isn't the whole thing, just enough of it to work. An LLM is a <strong>model of how language usually goes</strong> — a copy of the patterns in writing.</p>
-                <p>(Think of a scale model: a toy plane might be <strong>1/100</strong> the size of a real one. Way smaller — but the shape's still right.)</p>
+                <span class="ls-tag">🏷️ small · medium · big</span>
+                <h3>Every brand sells the same three sizes</h3>
+                <p>Once you spot the pattern you can't unsee it. Each company sells a small, a medium, and a big version of its model:</p>
+                <p>
+                  <span class="calc">Claude: Haiku · Sonnet · Opus</span>
+                  <span class="calc">Gemini: Flash-Lite · Flash · Pro</span>
+                </p>
+                <p>Left = small (quick, cheap, less clever). Right = big (slower, pricier, cleverer). Same idea, two brands. The catch: you don't <em>always</em> want the big one — see the last step.</p>
               </div>
             </div>
 
@@ -284,9 +339,9 @@
             <div class="ls-step reveal">
               <span class="num">2</span>
               <div class="ls-card">
-                <span class="ls-tag">🗣️ words in, words out</span>
-                <h3>The middle L is for Language</h3>
-                <p>It works in <strong>words</strong>: you give it some, it gives some back. That's exactly the trick from <a href="#lesson-1">Lesson 1</a> — guess the next word, add it, guess the next one, and keep going until there's a whole answer.</p>
+                <span class="ls-tag">✖️➕ more sums</span>
+                <h3>The maths difference: how many sums</h3>
+                <p>Remember the <strong>importance numbers</strong> from Lesson 1 — the ones you multiply and add to score each word? A bigger model simply has <strong>WAY more of them</strong>. More numbers means more multiplying-and-adding for <em>every single word</em> it guesses. More sums → cleverer guesses, but also slower and more expensive. That's the whole trade: bigger brain, bigger electricity bill.</p>
               </div>
             </div>
 
@@ -294,12 +349,11 @@
             <div class="ls-step reveal">
               <span class="num">3</span>
               <div class="ls-card">
-                <span class="ls-tag">📈 big numbers</span>
-                <h3>The big L is for Large — and it MEANS large</h3>
-                <p>It's large in two ways: it <strong>learned from a giant pile of writing</strong> — billions of words — and it has a giant pile of those "importance numbers" from Lesson 1, <strong>millions to billions</strong> of them.</p>
-                <p>How big is a billion, really? If you read <strong>one word every second</strong> and never stopped to sleep:</p>
-                <p><span class="calc">1,000,000,000 words ÷ 1 per second ≈ 32 YEARS</span></p>
-                <p>…just to read a billion words once. An LLM learns from <em>way</em> more than that. So yes — large.</p>
+                <span class="ls-tag">🧩 tokens</span>
+                <h3>What's a "token"?</h3>
+                <p>A model doesn't read whole words — it chops text into <strong>tokens</strong>, little word-ish chunks. A short word like "cat" is 1 token; a long one like "watercolour" is a few; spaces and full stops count too.</p>
+                <p><span class="calc">rough rule: ~4 letters ≈ 1 token</span></p>
+                <p>And here's the money bit: you pay <strong>per token</strong> — for what you put <strong>IN</strong> (your question) <em>and</em> what it writes <strong>OUT</strong> (its answer).</p>
               </div>
             </div>
 
@@ -307,9 +361,13 @@
             <div class="ls-step reveal">
               <span class="num">4</span>
               <div class="ls-card">
-                <span class="ls-tag">🔁 Lesson 1, but huge</span>
-                <h3>So what IS it?</h3>
-                <p>Put the three words back together: a <strong>Model</strong> (a good-enough copy) of <strong>Language</strong> (words), made <strong>Large</strong> (tons of writing, tons of importance numbers). It's the Lesson 1 next-word guesser, scaled up enormously — and that scale is the whole reason it can write stories, answer questions, and help me code.</p>
+                <span class="ls-tag">💰 one more multiply</span>
+                <h3>Why one costs more than another</h3>
+                <p>Your bill is just another multiply you already know how to do:</p>
+                <p><span class="calc">how many tokens × price per token = cost</span></p>
+                <p>Two things push it up: <strong>more tokens</strong> (a long question and a long answer), and a <strong>bigger model</strong> — which charges more <em>per token</em>, because each token drags along all those extra sums from Step 2. Put together, the big model can cost roughly:</p>
+                <p><span class="calc">big ≈ 10–30× the small one, per word</span></p>
+                <p>(And "thinking" modes? They make the model write extra <em>hidden</em> tokens while it works things out. Handy — but you pay for those too.)</p>
               </div>
             </div>
 
@@ -317,9 +375,14 @@
             <div class="ls-step reveal">
               <span class="num">5</span>
               <div class="ls-card">
-                <span class="ls-tag">⚠️ it doesn't actually KNOW</span>
-                <h3>What it ISN'T</h3>
-                <p>Here's the bit people forget: an LLM doesn't truly <strong>know</strong> facts, and it isn't thinking like a person. It's guessing the most likely-sounding words — which means it can be confidently, cheerfully <strong>WRONG</strong>. (My perpetually cheerful AI "pet" will happily tell me complete nonsense with a straight face.) So I always double-check it. No feelings, no magic — just maths.</p>
+                <span class="ls-tag">🧮 right-size it</span>
+                <h3>How I keep my AI bill down</h3>
+                <p>This is exactly what I had to think about in my <strong>Science Tutoring Tool</strong>. Four tricks:</p>
+                <p><strong>1. Pick the smallest model that's good enough.</strong> I used <strong>Flash</strong>, not <strong>Pro</strong> — Pro is cleverer than building a cheat sheet actually needs.</p>
+                <p><strong>2. Turn thinking DOWN on the easy steps.</strong> Checking a question barely needs thought; only the writing step thinks hard.</p>
+                <p><strong>3. Keep questions short</strong> — fewer tokens IN.</p>
+                <p><strong>4. CACHE.</strong> Once my tool makes a cheat sheet, it saves it — so running it again costs nothing. Never pay twice for the same answer.</p>
+                <p>(All of that is on the <a href="science-workflow.html">how my tool works</a> page.)</p>
               </div>
             </div>
 
@@ -327,8 +390,12 @@
 
           <!-- Closing callout -->
           <div class="card ls-why reveal">
-            <h3>So "LLM" isn't a magic spell</h3>
-            <p>It's three honest words — <b>Large</b>, <b>Language</b>, <b>Model</b>. Same small sums as Lesson 1, just an absolutely enormous number of them. Clever? Definitely. Magic? No. Actually thinking? Also no.</p>
+            <h3>So bigger isn't "better" — it's just bigger</h3>
+            <p>The skill isn't grabbing the biggest, cleverest model every time. It's <b>matching the model — and how hard it thinks — to the job</b> in front of you. Which, when you think about it, is just problem solving. (My perpetually cheerful AI "pet" would happily fire up Opus to work out 2 + 2. I would not.)</p>
+          </div>
+
+          <div class="ls-back reveal">
+            <a class="btn btn-ghost" href="#toc">↑ Back to contents</a>
           </div>
         </article>
 
