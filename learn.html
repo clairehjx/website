@@ -201,6 +201,18 @@
             <div class="ls-step reveal">
               <span class="num">3</span>
               <div class="ls-card">
+                <span class="ls-tag">🚪 the gate &amp; teamwork</span>
+                <h3>Two bits I skipped: a gate, and teamwork</h3>
+                <p>Real models add one move to that points sum. After everything's added up, the total goes through a tiny rule called an <strong>activation function</strong> — basically a <strong>gate</strong>. The simplest one just says: <em>"if the total comes out negative, call it 0; otherwise keep it."</em> Weak signals get blocked; strong ones pass through.</p>
+                <p>Why bother? Because adding sums on top of sums is still just… one big sum — a straight line. The gate lets the model <strong>bend</strong>, so it can catch trickier patterns, like "only count Clue B <em>if</em> Clue A is there too."</p>
+                <p>And the importance numbers don't work alone. The answer from one little sum becomes a <strong>clue for the next batch</strong> of sums — layer after layer, like a relay race. So the numbers <strong>team up</strong>: nudge one and everything downstream shifts. That teaming-up is where most of the cleverness hides.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="ls-step reveal">
+              <span class="num">4</span>
+              <div class="ls-card">
                 <span class="ls-tag">💯 percentages</span>
                 <h3>Turning points into "out of 100"</h3>
                 <p>Points are easier to compare as <strong>percentages</strong> — "out of 100". Add them up: <strong>60 + 30 + 10 = 100</strong>. So mat = <strong>60%</strong>, dog = <strong>30%</strong>, sky = <strong>10%</strong>. The highest one usually wins, so it picks <strong>mat</strong>.</p>
@@ -213,9 +225,9 @@
               </div>
             </div>
 
-            <!-- Step 4 -->
+            <!-- Step 5 -->
             <div class="ls-step reveal">
-              <span class="num">4</span>
+              <span class="num">5</span>
               <div class="ls-card">
                 <span class="ls-tag">🔁 guess &amp; check</span>
                 <h3>How did it get good? Guess and check — millions of times</h3>
@@ -230,9 +242,9 @@
               </div>
             </div>
 
-            <!-- Step 5 -->
+            <!-- Step 6 -->
             <div class="ls-step reveal">
-              <span class="num">5</span>
+              <span class="num">6</span>
               <div class="ls-card">
                 <span class="ls-tag">➗ average</span>
                 <h3>Why it reads SO much</h3>
@@ -241,9 +253,9 @@
               </div>
             </div>
 
-            <!-- Step 6 -->
+            <!-- Step 7 -->
             <div class="ls-step reveal">
-              <span class="num">6</span>
+              <span class="num">7</span>
               <div class="ls-card">
                 <span class="ls-tag">🚀 scale</span>
                 <h3>It's the same maths — just BIGGER</h3>
@@ -251,9 +263,9 @@
               </div>
             </div>
 
-            <!-- Step 7 -->
+            <!-- Step 8 -->
             <div class="ls-step reveal">
-              <span class="num">7</span>
+              <span class="num">8</span>
               <div class="ls-card">
                 <span class="ls-tag">🧩 model = a good-enough copy</span>
                 <h3>So what's an "LLM"? Start with M — Model</h3>
@@ -261,9 +273,9 @@
               </div>
             </div>
 
-            <!-- Step 8 -->
+            <!-- Step 9 -->
             <div class="ls-step reveal">
-              <span class="num">8</span>
+              <span class="num">9</span>
               <div class="ls-card">
                 <span class="ls-tag">📈 large means LARGE</span>
                 <h3>The big L is for Large — and it means it</h3>
@@ -274,9 +286,9 @@
               </div>
             </div>
 
-            <!-- Step 9 -->
+            <!-- Step 10 -->
             <div class="ls-step reveal">
-              <span class="num">9</span>
+              <span class="num">10</span>
               <div class="ls-card">
                 <span class="ls-tag">🧠 put it together</span>
                 <h3>Stick the three words back together</h3>
@@ -284,9 +296,9 @@
               </div>
             </div>
 
-            <!-- Step 10 -->
+            <!-- Step 11 -->
             <div class="ls-step reveal">
-              <span class="num">10</span>
+              <span class="num">11</span>
               <div class="ls-card">
                 <span class="ls-tag">⚠️ it doesn't actually KNOW</span>
                 <h3>What it ISN'T</h3>
@@ -367,13 +379,24 @@
                 <p><span class="calc">how many tokens × price per token = cost</span></p>
                 <p>Two things push it up: <strong>more tokens</strong> (a long question and a long answer), and a <strong>bigger model</strong> — which charges more <em>per token</em>, because each token drags along all those extra sums from Step 2. Put together, the big model can cost roughly:</p>
                 <p><span class="calc">big ≈ 10–30× the small one, per word</span></p>
-                <p>(And "thinking" modes? They make the model write extra <em>hidden</em> tokens while it works things out. Handy — but you pay for those too.)</p>
               </div>
             </div>
 
             <!-- Step 5 -->
             <div class="ls-step reveal">
               <span class="num">5</span>
+              <div class="ls-card">
+                <span class="ls-tag">🧠 a second dial: thinking level</span>
+                <h3>What "changing the thinking level" means</h3>
+                <p>Model <em>size</em> isn't the only dial. Most newer models also let you set a <strong>thinking level</strong> — how much <strong>working-out</strong> the model does <em>before</em> it answers. It's the difference between blurting "7 × 8 = 56" off the top of your head and <strong>showing your full working</strong> on a hard word problem.</p>
+                <p>Turn it <strong>down</strong> (some call the lowest setting "minimal") and it just gives its first guess — fast and cheap. Turn it <strong>up</strong> ("high") and it first scribbles loads of <em>hidden</em> working-out — extra <strong>thinking tokens</strong>, which (remember Step 4) you also pay for — and that makes it much better at tricky problems, but slower and pricier.</p>
+                <p>Same brain either way. You're only choosing <strong>how hard it bothers to think</strong> — so you can save the deep thinking for the jobs that actually need it.</p>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="ls-step reveal">
+              <span class="num">6</span>
               <div class="ls-card">
                 <span class="ls-tag">🧮 right-size it</span>
                 <h3>How I keep my AI bill down</h3>
