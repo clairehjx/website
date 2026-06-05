@@ -199,9 +199,9 @@
             <div class="wf-card">
               <h3>You draw your own things</h3>
               <span class="wf-file">src/components/PixelEditor.jsx</span>
-              <p class="wf-what">There's a little <strong>pixel editor</strong>: pick a colour, paint a grid, give it a name. It gets saved as a sprite (the same list-of-rows format as everything else) into a shared <strong>creations</strong> table, so when you trade it away, your friend sees the <em>exact</em> drawing you made.</p>
+              <p class="wf-what">There's a little <strong>pixel editor</strong> — now a <strong>Floor Tile Designer</strong>: start from a pattern (wood, checker, brick, water…) or just paint your own, name it, and it becomes a <strong>floor tile you can walk on</strong>. It's saved as a sprite (the same list-of-rows format as everything else) in a shared <strong>creations</strong> table, so when you trade or gift one, your friend gets the <em>exact</em> tile you drew.</p>
               <div class="badges"><span class="badge">player-made art</span><span class="badge">shared registry</span></div>
-              <p class="why"><b>Why:</b> the stuff people make themselves is the best part, so it had to be sharable, not just yours.</p>
+              <p class="why"><b>Why:</b> the stuff people make themselves is the best part, so it had to be sharable — and now you can floor your whole shop with it.</p>
             </div>
           </div>
 
@@ -209,10 +209,10 @@
             <span class="num">4</span>
             <div class="wf-card">
               <h3>Decorate your shophouse</h3>
-              <span class="wf-file">src/screens/MyShop.jsx</span>
-              <p class="wf-what">You pick your sign, awning and colours, then decorate two floors. Each floor is just a list of <strong>{ item, column, row }</strong> placements. Placing something takes it out of your bag; the upstairs is a <strong>secret 2nd floor</strong> only you can change.</p>
-              <div class="badges"><span class="badge">grid placements</span><span class="badge">two floors</span></div>
-              <p class="why"><b>Why:</b> saving decorations as plain grid positions makes them easy to store and re-draw exactly the same next time.</p>
+              <span class="wf-file">src/components/ShopRoom.jsx · pixel/roomEngine.js · pixel/themes.js</span>
+              <p class="wf-what">The rooms got a big(ish) upgrade. They're proper <strong>tiled rooms</strong> now (basically the inside of a building in Pokémon Gold), and you can <strong>recolour the whole room</strong> with a theme. <strong>Furniture you drag, drop and rotate</strong> — and it's <strong>solid</strong>, so you walk <em>around</em> the couch instead of straight through it. Your own pixel drawings lie flat as <strong>floor tiles</strong>; furniture sits on top. Each placement is now just <strong>{ item, x, y }</strong> — an exact pixel spot, not a clunky grid square.</p>
+              <div class="badges"><span class="badge">drag &amp; rotate</span><span class="badge">solid furniture</span><span class="badge warm">room themes</span></div>
+              <p class="why"><b>The one rule I refused to break:</b> never lose a decoration anyone had already placed. So old grid-square decorations quietly convert to the new pixel positions next time you save — same spot, nothing thrown away. (Still two floors, and the upstairs is still your secret.)</p>
             </div>
           </div>
 
