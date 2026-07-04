@@ -362,6 +362,14 @@ section { padding: 56px 0; }
   margin-left: auto; background: #fff; color: var(--blue);
   font-weight: 800; font-size: 0.7rem; padding: 2px 9px; border-radius: 999px;
 }
+.topic-links li:has(.answer-link) { display: flex; align-items: center; gap: 7px; }
+.topic-links li:has(.answer-link) a:first-child { flex: 1; }
+.answer-link {
+  display: block; flex: none; background: none !important; color: var(--ink-soft) !important;
+  font-weight: 600 !important; font-size: 0.8rem !important; padding: 4px 6px !important;
+  white-space: nowrap;
+}
+.answer-link:hover { color: var(--blue) !important; transform: none !important; }
 .chip {
   background: var(--mist); color: var(--blue-deep);
   font-weight: 800; font-size: 0.74rem;
