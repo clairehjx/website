@@ -165,6 +165,7 @@
           <ul class="ls-toc">
             <li><a href="#lesson-1"><span class="ls-toc-num">1</span> How AI works (and what an &ldquo;LLM&rdquo; really is)</a></li>
             <li><a href="#lesson-2"><span class="ls-toc-num">2</span> What's the difference between models?</a></li>
+            <li><a href="#lesson-3"><span class="ls-toc-num">3</span> Why some models are better at certain jobs</a></li>
           </ul>
         </div>
 
@@ -460,6 +461,92 @@
           <div class="card ls-why reveal">
             <h3>So bigger isn't "better" — it's just bigger</h3>
             <p>The skill isn't grabbing the biggest, cleverest model every time. It's <b>matching the model — and how hard it thinks — to the job</b> in front of you. Which, when you think about it, is just problem solving. (My perpetually cheerful AI "pet" would happily fire up Opus to work out 2 + 2. I would not.)</p>
+          </div>
+
+          <div class="ls-back reveal">
+            <a class="btn btn-ghost" href="#toc">↑ Back to contents</a>
+          </div>
+        </article>
+
+        <!-- ===== LESSON 3 ===== -->
+        <article class="lesson" id="lesson-3">
+          <div class="section-head reveal">
+            <span class="kicker">Lesson 3 · same averages, different homework</span>
+            <h2>Why some models are<br>better at certain jobs</h2>
+          </div>
+
+          <div class="card ls-intro reveal">
+            <p>Lesson 2 was all about <strong>size</strong> — small, medium, big, same three sizes everywhere. But size isn't the whole story. Two models can be roughly the same size and still be wildly different at, say, writing a 华文作文 — because they didn't practise on the same stuff. This lesson is about the <strong>other</strong> dial: what a model actually read growing up.</p>
+          </div>
+
+          <div class="ls-steps">
+
+            <!-- Step 1 -->
+            <div class="ls-step reveal">
+              <span class="num">1</span>
+              <div class="ls-card">
+                <span class="ls-tag">➗ the average trick, again</span>
+                <h3>Remember Lesson 1's "read a huge pile and average it"?</h3>
+                <p>Back in Lesson 1, Step 6: a model reads a <strong>huge</strong> pile of text and basically takes an <strong>average</strong>, so the usual next word wins over some weird one-off. That means its guesses are only as good as its reading pile. If that pile barely has any Chinese in it, its "average" for Chinese is built on scraps.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="ls-step reveal">
+              <span class="num">2</span>
+              <div class="ls-card">
+                <span class="ls-tag">📚 same method, different subject</span>
+                <h3>Same study method, different homework pile</h3>
+                <p>Picture two P5 kids doing the exact same "read heaps, then average it" study method. One spends most of their time on 华文 comprehension passages; the other spends most of theirs on English essays. Equally hardworking, equally clever — but each one gets noticeably better at whichever pile is bigger. Models work the same way: the <strong>mix</strong> of language and subject in their reading pile decides what they end up unusually good at, regardless of how "big" the model is.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="ls-step reveal">
+              <span class="num">3</span>
+              <div class="ls-card">
+                <span class="ls-tag">🀄 my example: Qwen 3.7 Plus</span>
+                <h3>Why the Chinese pages use a different model</h3>
+                <p>Scroll down to my <a href="index.html#apps">apps</a> and you'll spot the chips: the science and English cheat sheets say <strong>"Content by Gemini"</strong>, but the Chinese Sample Essays and Chinese Mock Papers say <strong>"Content by Qwen 3.7 Plus."</strong> That's not random — Qwen is built by Alibaba, and its reading pile leans heavily on actual Chinese-language text: 成语, 惯用语, the kind of sentence patterns PSLE composition markers actually want to see. So its "average guess" for natural exam-appropriate Chinese is a lot steadier than a model whose pile was mostly English.</p>
+                <p>Toy numbers, same spirit as Lesson 1's mat/dog/sky example — not a real published benchmark, just to show the <em>shape</em> of the difference:</p>
+                <table class="score-table">
+                  <thead><tr><th>Model</th><th>Chinese in its reading pile</th><th>How natural its 成语 sound (toy score /100)</th></tr></thead>
+                  <tbody>
+                    <tr><td>a model raised mostly on English</td><td>tiny slice</td><td>54</td></tr>
+                    <tr class="win"><td>Qwen 3.7 Plus</td><td>huge slice</td><td>93</td></tr>
+                  </tbody>
+                </table>
+                <p class="bar-cap">(Made-up numbers — the point is the gap, not the exact digits.)</p>
+                <p>None of this means Qwen is "smarter" overall — see Lesson 2, size and skill aren't the same knob. It just means its diet happens to suit this particular job.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="ls-step reveal">
+              <span class="num">4</span>
+              <div class="ls-card">
+                <span class="ls-tag">🎯 pick the tutor, not the trophy</span>
+                <h3>It's the tuition-teacher problem all over again</h3>
+                <p>You wouldn't hire the school's top maths-olympiad kid to teach you 华文 composition just because they're clever — you'd pick whoever's actually <strong>good at Chinese</strong>. Same logic for choosing a model: match its practice diet to the job, not just how big it is.</p>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="ls-step reveal">
+              <span class="num">5</span>
+              <div class="ls-card">
+                <span class="ls-tag">🧮 two dials now</span>
+                <h3>Size AND specialty — both matter</h3>
+                <p>So there are two dials for picking a model, not one: how <strong>big</strong> (Lesson 2), and what it's actually <strong>good at</strong> (this lesson). On my Science Tutoring Tool: English and science cheat sheets → Gemini. Chinese sample essays and mock papers → Qwen 3.7 Plus. Neither one is "the best" model, full stop — they're each just better at their own thing.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Closing callout -->
+          <div class="card ls-why reveal">
+            <h3>So "best AI model" is a trick question</h3>
+            <p>There's no single best model — only the one that <b>practised the right subject</b> for the job you're giving it. My perpetually cheerful AI "pet" would happily let an English-only model have a go at my 华文 homework. I would not. I've seen what that looks like.</p>
           </div>
 
           <div class="ls-back reveal">
