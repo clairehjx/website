@@ -4,7 +4,7 @@ Static site, repo `clairehjx/website`, live at **https://claire-hjx.vercel.app**
 Git-connected to Vercel: **push to `main` auto-deploys** (~30–60s). No build step.
 
 ## Files
-`index.html` (homepage) · `learn.html` (lessons page) · `science-workflow.html` (how the science tool works) · `styles.css` (all CSS) · `script.js` (footer year + `.reveal` IntersectionObserver) · `gate.js` (friends-only password) · `README.md`.
+`index.html` (homepage) · `learn.html` (lessons page) · `science-workflow.html` (how the science tool works) · `ccfarm-workflow.html` (how ccfarm works; screenshots in `img/ccfarm/`) · `styles.css` (all CSS) · `script.js` (footer year + `.reveal` IntersectionObserver) · `gate.js` (friends-only password) · `README.md`.
 
 ## Deploy / git — IMPORTANT
 - **Ask-first:** make edits, show them, **do NOT push until the user says "push it"/"publish"**.

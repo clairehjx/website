@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Friends-only soft password gate (runs before paint) -->
+  <script src="gate.js"></script>
+  <title>How ccfarm works · Claire</title>
+  <meta name="description" content="Behind the scenes of ccfarm — Claire's 3D Pokémon farm game in Godot: a shared farm on two phones, Claude-powered shopkeepers, and a story about a forgotten glade.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+
+  <!-- Page-specific styling for the steps & badges (built on the shared blue tokens) -->
+  <style>
+    .wf-hero { padding: 60px 0 24px; }
+    .wf-hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.4rem); }
+
+    .legend { margin-bottom: 28px; }
+    .legend h3 { color: var(--blue-deep); margin-bottom: 6px; }
+    .legend p  { color: var(--ink-soft); font-weight: 600; margin-bottom: 14px; }
+    .legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .legend-item {
+      background: var(--mist); border-radius: 14px; padding: 13px 15px;
+      border-left: 4px solid var(--blue-bright);
+    }
+    .legend-item strong { color: var(--blue-deep); }
+    .legend-item small { display: block; color: var(--ink-soft); font-weight: 600; font-size: 0.84rem; margin-top: 2px; }
+
+    .wf-steps { position: relative; padding-left: 38px; margin-top: 8px; }
+    .wf-steps::before {
+      content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
+      width: 4px; border-radius: 4px; background: linear-gradient(var(--sky), var(--wash));
+    }
+    .wf-step { position: relative; margin-bottom: 22px; }
+    .wf-step:last-child { margin-bottom: 0; }
+    .wf-step::before {
+      content: ""; position: absolute; left: -38px; top: 22px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 32%, var(--blue-bright), var(--blue-deep));
+      box-shadow: 0 0 0 5px rgba(74,144,217,0.16);
+    }
+    .wf-step .num {
+      position: absolute; left: -38px; top: 22px; width: 26px; height: 26px;
+      display: grid; place-items: center; color: #fff; font-weight: 800;
+      font-size: 0.85rem; font-family: 'Fredoka','Nunito',sans-serif; z-index: 2;
+    }
+    .wf-card { background: var(--card); border-radius: 16px; box-shadow: var(--shadow-sm); padding: 18px 20px; }
+    .wf-card h3 { font-size: 1.18rem; color: var(--ink); margin-bottom: 2px; }
+    .wf-file { font-size: 0.82rem; font-weight: 700; color: var(--blue); font-family: 'Fredoka','Nunito',sans-serif; }
+    .wf-what { color: var(--ink-soft); font-weight: 600; margin: 8px 0 12px; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .badge {
+      font-weight: 800; font-size: 0.74rem; padding: 4px 12px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--mist); color: var(--blue-deep);
+    }
+    .badge.green { background: var(--leaf); color: #1f6b4c; }
+    .badge.warm  { background: #fdeafc; color: #8a3d80; }
+
+    .why { font-size: 0.92rem; font-weight: 600; color: var(--ink-soft);
+           background: var(--paper); border-radius: 10px; padding: 10px 13px; }
+    .why b { color: var(--blue-deep); font-weight: 800; }
+
+    .wf-note { margin-top: 26px; }
+    .wf-note h3 { color: var(--blue-deep); margin-bottom: 6px; }
+    .wf-note p { color: var(--ink-soft); font-weight: 600; }
+    .wf-note p + p { margin-top: 10px; }
+    .wf-note strong { color: var(--blue-deep); }
+
+    /* "What you do" loop + shop chips */
+    .play-loop { list-style: none; margin: 8px 0 14px; padding: 0; }
+    .play-loop li { position: relative; padding: 5px 0 5px 22px; color: var(--ink-soft); font-weight: 600; }
+    .play-loop li::before { content: "→"; position: absolute; left: 0; color: var(--blue-bright); font-weight: 800; }
+
+    /* The build prompts */
+    .prompts-intro { color: var(--ink-soft); font-weight: 600; margin-bottom: 14px; }
+    .prompts { display: flex; flex-direction: column; gap: 11px; }
+    .prompt { margin: 0; background: var(--mist); border-left: 4px solid var(--blue-bright);
+      border-radius: 12px; padding: 12px 15px; color: var(--ink); font-weight: 700; }
+    .prompt::before { content: "\201C"; color: var(--blue-bright); font-weight: 800; }
+    .prompt::after  { content: "\201D"; color: var(--blue-bright); font-weight: 800; }
+
+    /* Two-column layout — characters down the right side */
+    .sh-grid { display: grid; grid-template-columns: 1fr 230px; gap: 30px; align-items: start; }
+    .sh-chars { position: sticky; top: 90px; }
+    .sh-chars h3 { color: var(--blue-deep); margin-bottom: 12px; }
+    .sh-char-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+    .sh-char { margin: 0; text-align: center; }
+    .sh-char svg { width: 100%; max-width: 76px; height: auto; image-rendering: pixelated;
+      background: var(--mist); border-radius: 12px; padding: 7px; box-shadow: var(--shadow-sm); }
+    .sh-char figcaption { margin-top: 5px; font-weight: 800; font-size: 0.78rem; color: var(--ink); }
+    .sh-char-empty { color: var(--ink-soft); font-weight: 600; font-size: 0.85rem; }
+    .sh-char-note { margin-top: 14px; color: var(--ink-soft); font-weight: 600; font-size: 0.8rem; }
+    @media (max-width: 820px) {
+      .sh-grid { grid-template-columns: 1fr; }
+      .sh-chars { position: static; margin-top: 4px; }
+      .sh-char-grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); }
+    }
+  </style>
+    .shot { margin: 12px 0 4px; }
+    .shot img { width: 100%; border-radius: 14px; box-shadow: var(--shadow-sm); display: block; background: var(--mist); }
+    .shot.phone img { max-width: 300px; margin: 0 auto; }
+    .shot figcaption { margin-top: 6px; font-size: 0.84rem; font-weight: 700; color: var(--ink-soft); text-align: center; }
+    .shot-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links">
+        <a href="index.html#apps">← Back to my apps</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">Under the hood</span>
+      <h1>How ccfarm<br>works</h1>
+      <p class="tagline">A 3D farm game where my sister and I share one farm, the Pokémon do the work (mostly), and the shopkeepers talk back. I design it, my dad builds it with a LOT of help from Claude, and I file complaints. It's a system.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+
+        <figure class="shot reveal">
+          <img src="img/ccfarm/farm-overview.png" alt="The farm: crop plots, the windmill, the bakery, the pond and a few Pokémon" loading="lazy">
+          <figcaption>The whole farm. Yes, the world curves like a rolling log. On purpose.</figcaption>
+        </figure>
+
+        <!-- How it started -->
+        <div class="card wf-note reveal" style="margin-top:0;margin-bottom:28px;">
+          <h3>How it started: ChatGPT first, then Claude Code</h3>
+          <p>Before there was a single line of code, I spent ages in <strong>ChatGPT</strong> just brainstorming: what the farm is, which Pokémon live on it, who the shopkeepers are, and the whole story about Shaymin's Glade (the forgotten stones, the holidays as clues, the Chinese New Year ending). ChatGPT is good for that bit. You throw half-ideas at it and it throws more back.</p>
+          <p>Once the ideas were properly written down as design docs, the project moved to <strong>Claude Code</strong>, which actually builds things: it writes the code, runs the tests, renders screenshots to check its own work, and keeps a running list of questions for me (the designer, obviously) to answer. ChatGPT was the notebook. Claude Code is the workshop.</p>
+        </div>
+
+        <!-- What you actually do -->
+        <div class="card legend reveal">
+          <h3>What you actually do</h3>
+          <p>No winning, no losing. Just very organised busywork:</p>
+          <ul class="play-loop">
+            <li>Pick who's playing (Claire or Chloe) and land on the shared farm.</li>
+            <li>Plant crops — they grow in about 5 minutes, because nobody has time for real farming.</li>
+            <li>Collect milk, wool, honey and eggs from the farm Pokémon.</li>
+            <li>Turn it into food, drinks and clothes at the workshops (your partner Pokémon helps with chores).</li>
+            <li>Chat with the shopkeepers in town — type literally anything.</li>
+            <li>Decorate your room, change your outfit, hit milestones to unlock upgrades.</li>
+            <li>Follow the clues to Shaymin's Glade. No spoilers.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Miltank</span><span class="chip">Wooloo</span><span class="chip">Combee</span><span class="chip">Torchic</span><span class="chip">Umbreon</span><span class="chip">Sylveon</span><span class="chip">Furfrou</span><span class="chip">Mimikyu</span><span class="chip">+ Shaymin (eventually)</span>
+          </div>
+        </div>
+
+        <!-- The pieces -->
+        <div class="card legend reveal">
+          <h3>The five pieces</h3>
+          <p>It's a lot bigger than my last games. Here's what holds it together:</p>
+          <div class="legend-grid">
+            <div class="legend-item"><strong>Godot 4</strong><small>A real game engine. 3D, lighting, the works.</small></div>
+            <div class="legend-item"><strong>Blender scripts</strong><small>The buildings, furniture and Pokémon are made by code, not by hand.</small></div>
+            <div class="legend-item"><strong>Farm Host</strong><small>A little server on our home NAS that holds the shared farm.</small></div>
+            <div class="legend-item"><strong>Claude</strong><small>The brains behind every shopkeeper's replies.</small></div>
+            <div class="legend-item"><strong>Android app</strong><small>Runs on a flip phone and updates itself.</small></div>
+          </div>
+        </div>
+
+        <!-- Who does what -->
+        <div class="card legend reveal">
+          <h3>Who does what (the machines, not us)</h3>
+          <p>Five things pass the work along, kind of like a relay race:</p>
+          <ul class="play-loop">
+            <li><strong>Claude Code</strong> runs on the <strong>iMac</strong>. It writes the game code, and it also writes <strong>Python scripts for Blender</strong>.</li>
+            <li><strong>Blender</strong> runs those scripts and builds the 3D models (the cottages, workshops, furniture and the Pokémon) out of code. Nobody sculpts anything by hand, which is great, because neither of us can.</li>
+            <li><strong>Godot</strong> (also on the iMac) takes those models and turns everything into the actual game. Claude Code runs Godot from the command line to test the game and take screenshots, so it can SEE whether the barn is upside down before I do.</li>
+            <li>When a new version is ready, the iMac exports an Android app and uploads it to the <strong>NAS</strong> (the little always-on storage box at home). Our phones check the NAS and <strong>update themselves</strong>.</li>
+            <li>The <strong>NAS</strong> also runs the game server that holds the shared farm, and a "Farm Host" that passes shopkeeper conversations to Claude. It keeps daily backups of the save too. So the phones work even when the iMac is off. Everything talks over <strong>Tailscale</strong>, a private network only our devices can join.</li>
+          </ul>
+          <p>Short version: Claude Code writes it on the iMac, Blender shapes it, Godot builds it, the NAS hosts it, and the phones play it.</p>
+        </div>
+
+        <!-- Steps -->
+        <div class="section-head reveal">
+          <span class="kicker">Step by step</span>
+          <h2>What's going on inside</h2>
+        </div>
+
+        <div class="wf-steps">
+
+          <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
+            <h3>One farm, two phones</h3>
+            <span class="wf-file">server · SQLite · Tailscale</span>
+            <p class="wf-what">Both phones connect to the Farm Host, which keeps the ONE true copy of the farm. If Chloe harvests the wheat, it's gone on my screen too (rude, but correct). We each have our own wallet and bag, and bedtime only skips to morning when everyone's actually in bed.</p>
+            <div class="why"><b>Why:</b> if each phone kept its own farm, they'd disagree within about four seconds.</div>
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">2</span><div class="wf-card">
+            <h3>Shopkeepers that actually talk</h3>
+            <span class="wf-file">Claude · ramen panda, tea turtle, upgrade bear</span>
+            <p class="wf-what">When you type to a shopkeeper, the game sends their personality, what they know, and your message to Claude. The reply comes back with words AND an expression, so they get a little emote bubble and a gesture to match.</p>
+            <figure class="shot phone"><img src="img/ccfarm/shopkeeper-chat.png" alt="Chatting with a shopkeeper on the phone" loading="lazy"><figcaption>Top half: the game. Bottom half: me being nosy.</figcaption></figure>
+            <div class="why"><b>Rule:</b> only humans talk. Pokémon get thought bubbles at most. I will not be moved on this.</div>
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">3</span><div class="wf-card">
+            <h3>Pokémon doing the actual work</h3>
+            <span class="wf-file">scripts/runtime · production cycles</span>
+            <p class="wf-what">Every farm Pokémon runs the same loop: make something, idle, get fed, repeat. Each one has its own morning greeting and a signature antic. Your partner follows you around and runs chores in the workshops.</p>
+            <figure class="shot"><img src="img/ccfarm/pokemon-farm.png" alt="Claire and Umbreon in the pasture with Miltank, Wooloo and Gogoat" loading="lazy"><figcaption>Me, Umbreon, and the staff. Nobody is working.</figcaption></figure>
+            <figure class="shot"><video src="img/ccfarm/gameplay.mp4" autoplay muted loop playsinline style="width:100%;max-width:360px;margin:0 auto;display:block;border-radius:14px;box-shadow:var(--shadow-sm);"></video><figcaption>Eleven seconds of actual gameplay: walk, harvest, get followed by Umbreon.</figcaption></figure>
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">4</span><div class="wf-card">
+            <h3>Decorating & dressing up</h3>
+            <span class="wf-file">Maker Studio · wardrobe · decorate mode</span>
+            <p class="wf-what">Everyone has their own room to decorate, and a wardrobe for outfits, hair and colours, saved on the server so the other person sees your look too. Furniture snaps to the grid. Mostly.</p>
+            <div class="shot-row">
+              <figure class="shot"><img src="img/ccfarm/room-decorate.png" alt="Decorating a bedroom" loading="lazy"><figcaption>My room. Tasteful.</figcaption></figure>
+              <figure class="shot"><img src="img/ccfarm/avatar-wardrobe.png" alt="Avatar wardrobe and outfits" loading="lazy"><figcaption>The wardrobe lineup.</figcaption></figure>
+            </div>
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">5</span><div class="wf-card">
+            <h3>Real holidays, real story</h3>
+            <span class="wf-file">Halloween · Christmas · Chinese New Year</span>
+            <p class="wf-what">Seasons follow the real calendar. At Christmas the leaves turn into snow, the berries become Berry Tarts and a tree goes up. Each holiday is also a chapter of the story about the forgotten glade, which finishes at Chinese New Year.</p>
+            <div class="shot-row">
+              <figure class="shot"><img src="img/ccfarm/christmas.png" alt="The farm at Christmas dusk with snow, roof lights and lit windows" loading="lazy"><figcaption>Christmas at dusk. Yes, the sky is pink. It's a choice.</figcaption></figure>
+              <figure class="shot"><img src="img/ccfarm/glade.png" alt="A forest clearing with Leavanny, Oinkologne and mushrooms" loading="lazy"><figcaption>The forest. The glade is somewhere past here. Not telling where.</figcaption></figure>
+            </div>
+          </div></div>
+
+        </div>
+
+        <div class="card wf-note reveal">
+          <h3>The design / tech split</h3>
+          <p>I write the <strong>design answers</strong> (what the milestones are, what each Pokémon's antic is, whether Mimikyu should be life-size — yes, obviously). The build then hands me back a list of <strong>designer questions</strong>, I answer them, and the next version shows up on my phone by itself. It's basically a very slow group chat with a game engine.</p>
+          <p><strong>Where's the code?</strong> It's closed source for now, mostly because it's nowhere near done and I'd rather not have strangers judging my half-built barn. Once it's finished, I plan to open source it on <a href="https://github.com/clairehjx" target="_blank" rel="noopener">my GitHub</a>.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made by <strong>Claire</strong> — too much blue watercolour and one perpetually cheerful AI.</p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · still building, still learning.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
