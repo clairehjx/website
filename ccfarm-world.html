@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Friends-only soft password gate (runs before paint) -->
+  <script src="gate.js"></script>
+  <title>ccfarm: the game · Claire</title>
+  <meta name="description" content="What you do in ccfarm: the shared farm, the Pokémon, houses and decorating, the holidays and the story of Shaymin's Glade.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ccfarm.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links">
+        <a href="index.html#ccfarm">← Back to my site</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">ccfarm · the game</span>
+      <h1>What you actually<br>do all day</h1>
+      <p class="tagline">No winning, no losing. Just very organised busywork, a lot of decorating, and a mystery the Pokémon refuse to explain because Pokémon don't talk. Rules are rules.</p>
+      <div class="cc-tabs">
+        <a href="ccfarm.html">Overview</a>
+        <a href="ccfarm-world.html" aria-current="page">The game</a>
+        <a href="ccfarm-workshop.html">The workshop</a>
+        <a href="ccfarm-workflow.html">How it's built</a>
+        <a href="ccfarm-updates.html">Updates</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+
+        <figure class="shot  reveal"><img src="img/ccfarm/farm-overview.png" alt="The farm: crop plots, the windmill, the pond and a few Pokémon" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The farm. Yes, the world curves like a rolling log. On purpose.</figcaption></figure>
+
+        <div class="card legend reveal">
+          <h3>A normal day on the farm</h3>
+          <ul class="play-loop">
+            <li>Pick who's playing (Claire or Chloe) and land on the shared farm.</li>
+            <li>Plant crops. They grow in about 5 minutes, because nobody has time for real farming.</li>
+            <li>Collect milk, wool, honey and eggs from the farm Pokémon.</li>
+            <li>Turn it all into food and drinks at the work bench. Your partner Pokémon helps with the chores.</li>
+            <li>Sell it, then spend it in town: the ramen shop, the tea shop and the furniture workshop.</li>
+            <li>Decorate. Then decorate some more.</li>
+            <li>Notice the Pokémon acting strange near the forest. Follow them. No spoilers.</li>
+          </ul>
+        </div>
+
+        <div class="wf-steps">
+          <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
+            <h3>One farm, two phones</h3>
+            <span class="wf-file">Claire · Chloe · a shared world</span>
+            <p class="wf-what">We each get our own wallet, our own bag and our own house, but the farm is shared. If Chloe harvests the wheat, it's gone on my screen too (rude, but correct). Bedtime only skips to morning when everyone's actually in bed.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/landscape-farm.png" alt="The sideways phone layout" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Sideways mode: the farm fills the whole screen and the buttons float over it.</figcaption></figure>
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">2</span><div class="wf-card">
+            <h3>Pokémon doing the actual work</h3>
+            <span class="wf-file">Miltank · Wooloo · Combee · Torchic · Gogoat · Oinkologne</span>
+            <p class="wf-what">Every farm Pokémon makes something, idles, gets fed, repeats. Each one has its own morning greeting and a signature antic. My partner Umbreon follows me round, fetches things and runs workshop chores. Chloe's is Sylveon. Its rings glow brighter at night now, because I asked.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/pokemon-farm.png" alt="Claire and Umbreon in the pasture with Miltank, Wooloo and Gogoat" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Me, Umbreon, and the staff. Nobody is working.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/backyard-pokemon.png" alt="A Pokémon roaming a backyard" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Mimikyu and an Eevee live in our backyards. Mimikyu was rebuilt from MY drawing.</figcaption></figure>
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">3</span><div class="wf-card">
+            <h3>Shopkeepers that actually talk</h3>
+            <span class="wf-file">Claude · panda (ramen) · turtle (tea) · bear (workshop)</span>
+            <p class="wf-what">The shopkeepers are animal villagers. Type anything to them and Claude writes their reply, in character, with a mood attached, so they pull a face and do a little gesture to match. The ramen and tea stalls are proper shopfronts on the main street now, with the owners behind the counters.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/shopfronts.png" alt="The ramen and tea shopfronts on the main street" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The shopfronts. Ramen on one side, tea on the other, my wallet in the middle.</figcaption></figure><figure class="shot phone reveal"><img src="img/ccfarm/shopkeeper-chat.png" alt="Chatting with a shopkeeper on the phone" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Top half: the game. Bottom half: me being nosy.</figcaption></figure>
+            <div class="why"><b>Rule:</b> only humans and villagers talk. Pokémon get thought bubbles at most. I will not be moved on this.</div>
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">4</span><div class="wf-card">
+            <h3>Houses (with FOUR rooms now)</h3>
+            <span class="wf-file">decorate mode · lanterns · the mirror</span>
+            <p class="wf-what">Everyone has a house to decorate. It started as one room, then I asked for more space, so now there's a side room, a mirrored west room and a north room behind the back wall. In decorate mode the walls drop to half height so you can carry furniture from room to room. You can sit on the chairs and lie on the beds, and Umbreon comes inside and curls up in its pet bed. Each room has a lantern that lights up at night. The mirror changes your outfit, hair style and colours.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/house-rooms-night.png" alt="Inside a house at night with lanterns lit" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Night mode. Cosy, as instructed.</figcaption></figure><div class="shot-row"><figure class="shot  reveal"><img src="img/ccfarm/room-decorate.png" alt="Decorating a bedroom" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>My room. Tasteful.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/avatar-wardrobe.png" alt="Avatar wardrobe and outfits" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The wardrobe lineup.</figcaption></figure></div>
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">5</span><div class="wf-card">
+            <h3>Real holidays, real story</h3>
+            <span class="wf-file">Halloween · Christmas · Chinese New Year</span>
+            <p class="wf-what">Seasons follow the real calendar. At Christmas the snow ramps in over three days, every shop gets lights, and Papa leaves a gift in each person's stocking. At Chinese New Year, Gracidea flowers bloom by the old glade path, and you can finally cook the Special Ramen from the old family recipe. Who it's for, I'm not saying. Play it.</p>
+            <div class="shot-row"><figure class="shot  reveal"><img src="img/ccfarm/christmas.png" alt="The farm at Christmas dusk" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Christmas at dusk. Yes, the sky is pink. It's a choice.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/shops-christmas.png" alt="The shopfronts with Christmas lights" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The shops, festively lit.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/christmas-indoors.png" alt="The Christmas tree indoors" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The tree and the stocking.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/chinese-new-year.png" alt="Gracidea flowers by the old glade path at Chinese New Year" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chinese New Year: Gracidea by the old path. Suspicious.</figcaption></figure><figure class="shot  reveal"><img src="img/ccfarm/glade.png" alt="A forest clearing" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The forest. The glade is somewhere past here.</figcaption></figure></div>
+            <div class="why"><b>Why real dates:</b> Christmas in the game is Christmas in real life. Much less confusing than a pretend calendar.</div>
+          </div></div>
+        </div>
+        <div class="next-page"><a class="btn btn-ghost" href="ccfarm.html">← Overview</a><a class="btn btn-primary" href="ccfarm-workshop.html">The workshop →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made by <strong>Claire</strong> — too much blue watercolour and one perpetually cheerful AI.</p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · still building, still learning.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
