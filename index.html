@@ -23,6 +23,7 @@
     <div class="wrap">
       <a class="brand" href="#top"><span class="dot"></span>Claire</a>
       <div class="nav-links">
+        <a href="#ccfarm">ccfarm</a>
         <a href="#about">About</a>
         <a href="#apps">My Apps</a>
         <a href="learn.html">Learn</a>
@@ -42,13 +43,42 @@
       <h1>I'm <span class="name">Claire</span><br>and I build stuff with AI.</h1>
       <p class="tagline">A Primary 5 student with her perpetually cheerful AI &ldquo;pet&rdquo;.</p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="#apps">See my apps →</a>
+        <a class="btn btn-primary" href="#ccfarm">See my biggest project →</a>
+        <a class="btn btn-ghost" href="#apps">All my apps</a>
         <a class="btn btn-ghost" href="https://github.com/clairehjx" target="_blank" rel="noopener">My code on GitHub</a>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- ============ FEATURED: ccfarm ============ -->
+    <section id="ccfarm">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">My biggest project (by FAR)</span>
+          <h2>ccfarm: The Secret of Shaymin's Glade</h2>
+        </div>
+        <article class="feature reveal">
+          <div class="feature-media">
+            <video src="img/ccfarm/gameplay-landscape.mp4" poster="img/ccfarm/farm-overview.png" autoplay muted loop playsinline preload="metadata"
+                   onerror="this.outerHTML='&lt;img src=&quot;img/ccfarm/farm-overview.png&quot; alt=&quot;The ccfarm farm&quot;&gt;'"></video>
+          </div>
+          <div class="feature-body">
+            <p>A cozy <strong>3D Pokémon farm game</strong> built in Godot with my dad. I'm the designer, he's the "tech lead" (his title, not mine), and Claude does most of the typing. My sister and I share one farm from our own phones: Pokémon do the farm work, the villagers are <strong>powered by Claude</strong> so you can type anything at them, and the furniture workshop will <strong>build any furniture you describe</strong>, in 3D, on the spot. There's also a real story about a forgotten glade in the forest. No spoilers.</p>
+            <div class="chips">
+              <span class="chip">Godot 4</span><span class="chip">3D</span><span class="chip">Multiplayer</span><span class="chip">Claude NPCs</span><span class="chip">Blender</span><span class="chip">Android</span>
+            </div>
+            <div class="app-actions">
+              <a class="btn btn-primary" href="ccfarm.html">Take the tour →</a>
+              <a class="btn btn-ghost" href="ccfarm-workshop.html">The workshop</a>
+              <a class="btn btn-ghost" href="ccfarm-workflow.html">🛠️ How it's built</a>
+            </div>
+            <p class="feature-note">Closed source for now. It goes on my GitHub once it's done.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- ============ ABOUT ============ -->
     <section id="about">
       <div class="wrap">
@@ -116,26 +146,6 @@
           <h2>Things I've built</h2>
         </div>
         <div class="apps-grid">
-
-          <!-- App: ccfarm (Shaymin's Glade) -->
-          <article class="app-card reveal">
-            <div class="app-thumb" style="background:url('img/ccfarm/farm-overview.png') center/cover, radial-gradient(circle at 30% 25%, #e4f5d8, #b9e0a5 70%, #8fcf9a);"></div>
-            <div class="app-body">
-              <h3>ccfarm: The Secret of Shaymin's Glade</h3>
-              <p>My newest (and by FAR biggest) one: a cozy <strong>3D Pokémon farm game</strong> built in Godot with my dad — I'm the designer, he's the "tech lead" (his title, not mine). My sister and I share one farm from our own phones: Miltank, Wooloo and Combee for milk, wool and honey, crops, workshops, and a partner Pokémon that actually does chores. The shopkeepers are <strong>animal villagers powered by Claude</strong>, so you can type anything at them and they answer (and pull a face about it). There's also a real story about a forgotten glade in the forest, which the Pokémon hint at but never explain, because Pokémon don't talk. Rules are rules.</p>
-              <div class="chips">
-                <span class="chip">Godot 4</span>
-                <span class="chip">3D</span>
-                <span class="chip">Multiplayer</span>
-                <span class="chip">Claude NPCs</span>
-                <span class="chip">Android</span>
-              </div>
-              <div class="app-actions">
-                <a class="btn btn-primary" href="ccfarm-workflow.html">🛠️ How it works</a>
-              </div>
-              <p style="font-size:0.85rem;margin-top:10px;">Closed source for now. It goes on my GitHub once it's done.</p>
-            </div>
-          </article>
 
           <!-- App: Shophouse Row -->
           <article class="app-card reveal">

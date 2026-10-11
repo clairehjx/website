@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Friends-only soft password gate (runs before paint) -->
+  <script src="gate.js"></script>
+  <title>ccfarm: the workshop · Claire</title>
+  <meta name="description" content="How ccfarm's furniture workshop works: describe a piece to the shop owner, Claude designs it, Blender builds it, and it goes in the catalogue.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ccfarm.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links">
+        <a href="index.html#ccfarm">← Back to my site</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">ccfarm · the workshop</span>
+      <h1>Describe it.<br>They'll build it.</h1>
+      <p class="tagline">My favourite new bit. Tell the workshop owner what furniture you want, in normal words, and a few seconds later there's an actual 3D piece of it spinning on a turntable. It still feels slightly illegal.</p>
+      <div class="cc-tabs">
+        <a href="ccfarm.html">Overview</a>
+        <a href="ccfarm-world.html">The game</a>
+        <a href="ccfarm-workshop.html" aria-current="page">The workshop</a>
+        <a href="ccfarm-workflow.html">How it's built</a>
+        <a href="ccfarm-updates.html">Updates</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+
+        <figure class="shot  reveal"><img src="img/ccfarm/furniture-workshop.png" alt="The furniture workshop on the main street" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The workshop, at the end of the main street. The craftsman is waving. Wave back.</figcaption></figure>
+
+        <div class="card legend reveal">
+          <h3>What happens when you ask for a "cloud-shaped sofa"</h3>
+          <p>The bear who used to run the upgrade stall now has a whole workshop, with two craftsmen hammering and sawing at the back (they look up and wave when you walk past, which is very polite of them).</p>
+        </div>
+
+        <div class="wf-steps">
+          <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
+            <h3>You ask the owner</h3>
+            <span class="wf-file">chat · Claude</span>
+            <p class="wf-what">You just describe it in the chat. He's a villager, so Claude is doing his talking, and it decides your request counts as a commission.</p>
+            <figure class="shot phone reveal"><img src="img/ccfarm/commission-chat.png" alt="The workshop owner's chat with a commissioned piece on a turntable" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The piece on its turntable, with a price. Drag to spin it.</figcaption></figure>
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">2</span><div class="wf-card">
+            <h3>Claude turns words into a recipe</h3>
+            <span class="wf-file">furniture designer prompt</span>
+            <p class="wf-what">A second Claude, the furniture designer, writes a recipe for the piece: which boxes, cylinders and spheres go where, how big, which colours. Basically LEGO instructions.</p>
+            
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">3</span><div class="wf-card">
+            <h3>Blender builds it on the iMac</h3>
+            <span class="wf-file">Farm Host → iMac workshop → Blender</span>
+            <p class="wf-what">The Farm Host on our NAS passes the recipe to the iMac, where Blender builds a real 3D model from it. If the iMac is off, the owner says his craftsmen are busy and only sells what's in stock. Very realistic, honestly.</p>
+            
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">4</span><div class="wf-card">
+            <h3>Buy it (or don't)</h3>
+            <span class="wf-file">Buy · No thanks</span>
+            <p class="wf-what">You get the price and a Buy button. If you buy it, it goes into your bag, and it joins the workshop catalogue so other people can buy one too. Custom pieces are half price now, because I said the first prices were daylight robbery.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/commissioned-pieces.png" alt="A lineup of commissioned furniture pieces" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Some things we've commissioned. No regrets.</figcaption></figure>
+            
+          </div></div>
+
+          <div class="wf-step reveal"><span class="num">5</span><div class="wf-card">
+            <h3>The catalogue</h3>
+            <span class="wf-file">on the table inside the workshop</span>
+            <p class="wf-what">Inside the workshop there's a catalogue on the table: one piece at a time on a turntable, Previous, Next, Buy. The roof goes see-through while you're inside so you can actually see.</p>
+            <figure class="shot  reveal"><img src="img/ccfarm/workshop-inside.png" alt="Inside the workshop with the catalogue and the craftsmen" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Inside. The craftsmen never stop. Union is looking into it.</figcaption></figure>
+            
+          </div></div>
+        </div>
+
+        <div class="card wf-note reveal">
+          <h3>Maker Studio (the grown-up version)</h3>
+          <p>There's also a separate app on the iMac called <strong>Maker Studio</strong> with the same trick for bigger jobs: a <strong>Furniture Maker</strong> and a <strong>creature maker</strong>. You describe it, Claude designs it, Blender builds it, it shows up on a turntable, and you press Save. That's where Mittens and Star came from.</p>
+          <figure class="shot  reveal"><img src="img/ccfarm/maker-studio.png" alt="Maker Studio's Furniture Maker" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Maker Studio.</figcaption></figure>
+        </div>
+        <div class="next-page"><a class="btn btn-ghost" href="ccfarm-world.html">← The game</a><a class="btn btn-primary" href="ccfarm-workflow.html">How it's built →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made by <strong>Claire</strong> — too much blue watercolour and one perpetually cheerful AI.</p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · still building, still learning.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
