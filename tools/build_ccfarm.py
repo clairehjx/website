@@ -115,21 +115,27 @@ def page(fname, title, desc, eyebrow, h1, tagline, body, prev=None, nxt=None):
 page("ccfarm.html", "ccfarm",
      "ccfarm: The Secret of Shaymin's Glade. Claire's biggest project, a 3D Pokémon farm game in Godot with Claude-powered shopkeepers.",
      "My biggest project", "ccfarm:<br>The Secret of Shaymin's Glade",
-     "A cozy 3D farm game my sister and I play together on our phones. Pokémon do the farm work, the shopkeepers talk back (thanks, Claude), and somewhere in the forest there's a glade the whole town forgot about. I'm the designer. It's taken over my life a bit.",
+     "I'm the game designer. The story, the rules, the characters and the feel of it are mine. It's a cozy 3D Pokémon farm game that my sister Chloe and I play on our phones, with a forgotten glade in the forest and shopkeepers who talk back. Papa handles the code (with a lot of help from Claude), then I tell him what's wrong with it.",
      f'''
         {clip("gameplay-landscape.mp4", "Sideways mode on a phone: walking down the main street to the furniture workshop.", poster="landscape-farm.png")}
         {clip("gameplay.mp4", "The original portrait view: walk, harvest, get followed by Umbreon.", "phone")}
 
         <div class="cc-stats reveal">
-          <div class="cc-stat"><b>2</b><span>players on one shared farm</span></div>
-          <div class="cc-stat"><b>3</b><span>shopkeepers you can actually talk to</span></div>
-          <div class="cc-stat"><b>4</b><span>rooms per house (I asked for more space)</span></div>
+          <div class="cc-stat"><b>23</b><span>designer questions I answered in one day</span></div>
+          <div class="cc-stat"><b>240+</b><span>changes built so far</span></div>
+          <div class="cc-stat"><b>7</b><span>weeks of building (Sept to early Nov)</span></div>
           <div class="cc-stat"><b>3</b><span>holidays, each a chapter of the story</span></div>
         </div>
 
         <div class="card legend reveal">
+          <h3>My job: designer</h3>
+          <p>I wrote the story arc, including the mystery and how it ends. I decide how the game plays and looks: crops grow in 5 minutes, Pokémon never talk (full stop), and the farm Pokémon are the guides but never explain anything. I work through long lists of design questions, send things back when they're wrong, and make my own avatars, creatures and furniture in Maker Studio. I also have an app now just for developing new ideas (see <a href="ccfarm-workflow.html">How it's built</a>).</p>
+          <p><strong>Papa's job: tech support, basically.</strong> He builds what's in the design with Claude Code and keeps the servers and phones running. He also makes the technical calls, plus a few others I'll allow (the animal shopkeepers were his idea, and so was the furniture workshop's chat ordering).</p>
+        </div>
+
+        <div class="card legend reveal">
           <h3>The pitch, in one breath</h3>
-          <p>You and your friends share one farm at the edge of a forest. You plant crops, look after Miltank, Wooloo and Combee, turn it all into food and furniture, decorate your house, and chat with the villagers in town, who are powered by Claude, so you can type literally anything at them. Meanwhile the Pokémon keep wandering off towards the same bit of forest. That's not a bug. That's the story.</p>
+          <p>My sister Chloe and I share one farm at the edge of a forest. You plant crops, look after Miltank, Wooloo and Combee, turn it all into food and furniture, decorate your house, and chat with the villagers in town, who are powered by Claude, so you can type literally anything at them. Meanwhile the Pokémon keep wandering off towards the same bit of forest. That's not a bug. That's the story.</p>
           <div class="chips">
             <span class="chip">Godot 4</span><span class="chip">3D</span><span class="chip">Multiplayer</span><span class="chip">Claude NPCs</span><span class="chip">Blender</span><span class="chip">Android</span>
           </div>
@@ -142,7 +148,7 @@ page("ccfarm.html", "ccfarm",
         <div class="cc-pages">
           <a class="cc-page reveal" href="ccfarm-world.html"><img src="img/ccfarm/farm-overview.png" alt="" loading="lazy"><div><h3>The game</h3><p>The farm, the Pokémon, the houses, the holidays and the glade.</p></div></a>
           <a class="cc-page reveal" href="ccfarm-workshop.html"><img src="img/ccfarm/workshop-inside.png" alt="" loading="lazy" onerror="this.src='img/ccfarm/room-decorate.png'"><div><h3>The workshop</h3><p>Describe a piece of furniture and the game builds it. In 3D. For real.</p></div></a>
-          <a class="cc-page reveal" href="ccfarm-workflow.html"><img src="img/ccfarm/shopkeeper-chat.png" alt="" loading="lazy" style="object-position:top"><div><h3>How it's built</h3><p>ChatGPT, Claude Code, Godot, Blender, an iMac and a box in the cupboard.</p></div></a>
+          <a class="cc-page reveal" href="ccfarm-workflow.html"><img src="img/ccfarm/shopkeeper-chat.png" alt="" loading="lazy" style="object-position:top"><div><h3>How it's built</h3><p>ChatGPT, Claude Code, Godot, Blender, an iMac and the NAS.</p></div></a>
           <a class="cc-page reveal" href="ccfarm-updates.html"><img src="img/ccfarm/christmas.png" alt="" loading="lazy"><div><h3>Updates</h3><p>What's changed, roughly by the day, because it changes daily.</p></div></a>
         </div>
 
@@ -179,9 +185,10 @@ page("ccfarm-world.html", "ccfarm: the game",
                 shot("landscape-farm.png", "The sideways phone layout", "Sideways mode: the farm fills the whole screen and the buttons float over it."))}
 
           {step(2, "Pokémon doing the actual work", "Miltank · Wooloo · Combee · Torchic · Gogoat · Oinkologne",
-                "Every farm Pokémon makes something, idles, gets fed, repeats. Each one has its own morning greeting and a signature antic. My partner Umbreon follows me round, fetches things and runs workshop chores. Chloe's is Sylveon. Its rings glow brighter at night now, because I asked.",
+                "Every farm Pokémon makes something, idles, gets fed, repeats. Each one has its own morning greeting and a signature antic. My partner Umbreon follows me round, forages and runs workshop chores, but it does NOT collect from the other Pokémon, because I want to do that myself (I changed that rule). Chloe's is Sylveon. Umbreon's rings glow brighter at night now, because I asked.",
                 shot("pokemon-farm.png", "Claire and Umbreon in the pasture with Miltank, Wooloo and Gogoat", "Me, Umbreon, and the staff. Nobody is working.")
-                + shot("backyard-pokemon.png", "A Pokémon roaming a backyard", "Mimikyu and an Eevee live in our backyards. Mimikyu was rebuilt from MY drawing."))}
+                + clip("pokemon-antics.mp4", "Signature antics. I asked for these.")
+                + shot("backyard-pokemon.png", "A Pokémon roaming a backyard", "Mimikyu and an Eevee live in our backyards. Mimikyu was rebuilt from a reference picture I picked."))}
 
           {step(3, "Shopkeepers that actually talk", "Claude · panda (ramen) · turtle (tea) · bear (workshop)",
                 "The shopkeepers are animal villagers. Type anything to them and Claude writes their reply, in character, with a mood attached, so they pull a face and do a little gesture to match. The ramen and tea stalls are proper shopfronts on the main street now, with the owners behind the counters.",
@@ -190,15 +197,16 @@ page("ccfarm-world.html", "ccfarm: the game",
                 "<b>Rule:</b> only humans and villagers talk. Pokémon get thought bubbles at most. I will not be moved on this.")}
 
           {step(4, "Houses (with FOUR rooms now)", "decorate mode · lanterns · the mirror",
-                "Everyone has a house to decorate. It started as one room, then I asked for more space, so now there's a side room, a mirrored west room and a north room behind the back wall. In decorate mode the walls drop to half height so you can carry furniture from room to room. You can sit on the chairs and lie on the beds, and Umbreon comes inside and curls up in its pet bed. Each room has a lantern that lights up at night. The mirror changes your outfit, hair style and colours.",
+                "Everyone gets their own house and backyard, in the cozy rustic cottage style I chose from a reference picture. Papa added three extra rooms round the main one, and I decided they stay completely empty so we can design them ourselves. In decorate mode the walls drop to half height so you can carry furniture from room to room. You can sit on the chairs and lie on the beds, and Umbreon comes inside and curls up in its pet bed. Each room has a lantern that lights up at night. The mirror changes your outfit, hair style and colours.",
                 shot("house-rooms-night.png", "Inside a house at night with lanterns lit", "Night mode. Cosy, as instructed.")
                 + '<div class="shot-row">'
                 + shot("room-decorate.png", "Decorating a bedroom", "My room. Tasteful.")
                 + shot("avatar-wardrobe.png", "Avatar wardrobe and outfits", "The wardrobe lineup.")
+                + shot("hair-styles.png", "Four hair styles", "Hair styles at the mirror, because I asked.")
                 + "</div>")}
 
           {step(5, "Real holidays, real story", "Halloween · Christmas · Chinese New Year",
-                "Seasons follow the real calendar. At Christmas the snow ramps in over three days, every shop gets lights, and Papa leaves a gift in each person's stocking. At Chinese New Year, Gracidea flowers bloom by the old glade path, and you can finally cook the Special Ramen from the old family recipe. Who it's for, I'm not saying. Play it.",
+                "Seasons follow the real calendar. At Christmas the snow ramps in over three days, every shop gets lights, and Papa leaves a gift in each person's stocking. At Chinese New Year, Gracidea flowers bloom by the old glade path, and you can finally cook the Special Ramen from the old family recipe. Who it's for, I'm not saying. Play it. (The story's written. Some of its holiday chapters are still being built.)",
                 '<div class="shot-row">'
                 + shot("christmas.png", "The farm at Christmas dusk", "Christmas at dusk. Yes, the sky is pink. It's a choice.")
                 + shot("shops-christmas.png", "The shopfronts with Christmas lights", "The shops, festively lit.")
@@ -214,7 +222,7 @@ page("ccfarm-world.html", "ccfarm: the game",
 page("ccfarm-workshop.html", "ccfarm: the workshop",
      "How ccfarm's furniture workshop works: describe a piece to the shop owner, Claude designs it, Blender builds it, and it goes in the catalogue.",
      "ccfarm · the workshop", "Describe it.<br>They'll build it.",
-     "My favourite new bit. Tell the workshop owner what furniture you want, in normal words, and a few seconds later there's an actual 3D piece of it spinning on a turntable. It still feels slightly illegal.",
+     "Papa's idea, and I'm allowing it. Tell the workshop owner what furniture you want, in normal words, and a few seconds later there's an actual 3D piece of it spinning on a turntable. It still feels slightly illegal.",
      f'''
         {shot("furniture-workshop.png", "The furniture workshop on the main street", "The workshop, at the end of the main street. The craftsman is waving. Wave back.")}
 
@@ -235,7 +243,7 @@ page("ccfarm-workshop.html", "ccfarm: the workshop",
                 "The Farm Host on our NAS passes the recipe to the iMac, where Blender builds a real 3D model from it. If the iMac is off, the owner says his craftsmen are busy and only sells what's in stock. Very realistic, honestly.")}
 
           {step(4, "Buy it (or don't)", "Buy · No thanks",
-                "You get the price and a Buy button. If you buy it, it goes into your bag, and it joins the workshop catalogue so other people can buy one too. Custom pieces are half price now, because I said the first prices were daylight robbery.",
+                "You get the price and a Buy button. If you buy it, it goes into your bag, and it joins the workshop catalogue so other people can buy one too. Custom pieces are cheaper now, because I told them to make the custom pieces cheaper.",
                 shot("commissioned-pieces.png", "A lineup of commissioned furniture pieces", "Some things we've commissioned. No regrets."))}
 
           {step(5, "The catalogue", "on the table inside the workshop",
@@ -244,9 +252,10 @@ page("ccfarm-workshop.html", "ccfarm: the workshop",
         </div>
 
         <div class="card wf-note reveal">
-          <h3>Maker Studio (the grown-up version)</h3>
-          <p>There's also a separate app on the iMac called <strong>Maker Studio</strong> with the same trick for bigger jobs: a <strong>Furniture Maker</strong> and a <strong>creature maker</strong>. You describe it, Claude designs it, Blender builds it, it shows up on a turntable, and you press Save. That's where Mittens and Star came from.</p>
+          <h3>Maker Studio (where I make my own stuff)</h3>
+          <p><strong>Maker Studio</strong> is an app on the iMac for making avatars, creatures and furniture myself. I describe it, Claude designs it, Blender builds it, it shows up on a turntable, I press Save, and it's in the game. That's where the creatures Mittens and Star came from.</p>
           {shot("maker-studio.png", "Maker Studio's Furniture Maker", "Maker Studio.")}
+          {shot("maker-avatar.png", "Maker Studio's avatar or creature tab", "Also Maker Studio. Fewer sofas.")}
         </div>''',
      prev=("ccfarm-world.html", "The game"), nxt=("ccfarm-workflow.html", "How it's built"))
 
@@ -254,7 +263,7 @@ page("ccfarm-workshop.html", "ccfarm: the workshop",
 page("ccfarm-workflow.html", "How ccfarm works",
      "Behind the scenes of ccfarm: brainstorming in ChatGPT, building with Claude Code, and how Godot, Blender, the iMac, the NAS and the phones fit together.",
      "ccfarm · how it's built", "How ccfarm<br>works",
-     "I design it, my dad builds it with a LOT of help from Claude, and I file complaints. It's a system.",
+     "I design it. Papa builds what I design with a LOT of help from Claude, and then I send it back. It's a system.",
      f'''
         <div class="card wf-note reveal" style="margin-top:0;margin-bottom:28px;">
           <h3>How it started: ChatGPT first, then Claude Code</h3>
@@ -286,6 +295,13 @@ page("ccfarm-workflow.html", "How ccfarm works",
           <p>Short version: Claude Code writes it on the iMac, Blender shapes it, Godot builds it, the NAS hosts it, and the phones play it.</p>
         </div>
 
+        <div class="card legend reveal">
+          <h3>Idea Studio: my app for what comes next</h3>
+          <p>New in November. Idea Studio is an app on my phone (it runs on our NAS) where I develop ideas with Claude, for ccfarm or for a brand-new game, and I can attach pictures. Claude asks me questions and only offers options when I'm stuck. It doesn't name things, doesn't add story, and doesn't write code. It also knows what we learnt building ccfarm, so it can warn me what's easy and what's a nightmare (fancy animations, apparently). I still decide.</p>
+          <p>When an idea's ready, I press <strong>"Write it up for Papa"</strong>. That makes a brief I can edit, and it gets a status: thinking it through, ready for Papa, building, in the game, or parked. Yes, I send Papa briefs.</p>
+          {shot("idea-studio.png", "The Idea Studio app on a phone", "Idea Studio.", "phone")}
+        </div>
+
         <div class="section-head reveal">
           <span class="kicker">The tricky bits</span>
           <h2>Stuff that was harder than it looks</h2>
@@ -293,7 +309,7 @@ page("ccfarm-workflow.html", "How ccfarm works",
 
         <div class="wf-steps">
           {step(1, "Keeping two phones on one farm", "server · SQLite · Tailscale",
-                "Both phones connect to the game server on the NAS, which keeps the ONE true copy of the farm. If a phone loses the connection, it doesn't quietly carry on by itself any more (that's how Chloe lost an afternoon of decorating, RIP). It keeps what you do, says it's rejoining, and sends it all over once it's back.",
+                "Both phones connect to the game server on the NAS, which keeps the ONE true copy of the farm. If a phone loses the connection, it doesn't quietly carry on by itself any more (that's how Chloe's decorating got lost, RIP). It keeps what you do, says it's rejoining, and sends it all over once it's back.",
                 why="<b>Why:</b> if each phone kept its own farm, they'd disagree within about four seconds.")}
 
           {step(2, "Talking villagers", "Claude · moods · gestures",
@@ -308,24 +324,26 @@ page("ccfarm-workflow.html", "How ccfarm works",
         </div>
 
         <div class="card wf-note reveal">
-          <h3>The design / tech split</h3>
-          <p>I write the <strong>design answers</strong> (what the milestones are, what each Pokémon's antic is, whether Mimikyu should be life-size — yes, obviously). The build then hands me back a list of <strong>designer questions</strong>, I answer them, and the next version shows up on my phone by itself. On 8 October I answered 23 in one go. It's basically a very slow group chat with a game engine.</p>
+          <h3>How I run the design</h3>
+          <p>I write the <strong>design answers</strong> (what the milestones are, what each Pokémon's antic is, who leaves the Christmas gift, that Oinkologne is female). Every build comes back with a list of <strong>designer questions</strong>. I answer them, Papa and Claude build the answers, and the next version shows up on my phone by itself. Claude isn't allowed to invent names or story, and anything it fills in while waiting for me is marked provisional until I say yes or no. On 8 October I answered 23 in one go. It's basically a very slow group chat with a game engine.</p>
           <p><strong>Where's the code?</strong> It's closed source for now. Once it's finished, I plan to open source it on <a href="https://github.com/clairehjx" target="_blank" rel="noopener">my GitHub</a>.</p>
         </div>''',
      prev=("ccfarm-workshop.html", "The workshop"), nxt=("ccfarm-updates.html", "Updates"))
 
 # ---------------------------------------------------------------- Updates
 LOG = [
+    ("2 Nov", "Idea Studio", "my own app for developing ideas with Claude, for ccfarm or for a whole new game. Yes, plural games."),
+    ("14 Oct", "All my design decisions in one document", "kept separate from Papa's calls, so nobody gets confused about who decided what."),
     ("9 Oct", "Phones that drop off the farm", "now rejoin instead of going off on their own, and tell you if Tailscale is off rather than just sulking."),
     ("8 Oct", "Four-room houses", "with a lantern in every room, lit at night."),
-    ("8 Oct", "23 designer questions answered", "Shopfronts for the ramen and tea shops, Christmas stockings, Chinese New Year with Gracidea and a very special ramen, hair styles at the mirror, and Umbreon allowed indoors."),
+    ("8 Oct", "23 designer questions answered", "Shopfronts for the ramen and tea shops, Christmas stockings, Chinese New Year with Gracidea and a very special ramen, hair styles at the mirror. (Umbreon coming indoors was Papa's request. Fine.)"),
     ("7 Oct", "The furniture workshop", "on the main street: commissions, a catalogue, two craftsmen, and you can finally sit on chairs."),
     ("7 Oct", "An app icon", "rendered from the game's own models. My house, Umbreon, me. Very on brand."),
     ("6 Oct", "Maker Studio's Furniture Maker", "and a My Creatures tab."),
     ("5 Oct", "Sideways play", "on the Galaxy S25, the Xperia and the Z Flip."),
-    ("4 Oct", "Mimikyu rebuilt from my drawing", "and an Eevee in Chloe's backyard. Cloud shadows and grass that parts when you walk through it."),
+    ("4 Oct", "Mimikyu rebuilt from my reference picture", "and an Eevee in Chloe's backyard. Cloud shadows and grass that parts when you walk through it."),
     ("4 Oct", "Separate wallets and bags", "so Chloe can no longer spend my money."),
-    ("3 Oct", "Christmas, milestones, wardrobe", "the designer's ten milestones, outfits and hair, shopkeeper emotes, a life-size Mimikyu."),
+    ("3 Oct", "Christmas, milestones, wardrobe", "the designer's ten milestones, outfits and hair, shopkeeper emotes, Mimikyu wandering the lane."),
     ("Sept", "The two-player farm", "the NAS game server, the start screen, the Android app that updates itself."),
 ]
 items = "\n".join(f'            <li><time>{d}</time><strong>{t}</strong> {x}</li>' for d, t, x in LOG)
