@@ -35,7 +35,7 @@
     <div class="wrap">
       <span class="eyebrow">ccfarm · how it's built</span>
       <h1>How ccfarm<br>works</h1>
-      <p class="tagline">I design it, my dad builds it with a LOT of help from Claude, and I file complaints. It's a system.</p>
+      <p class="tagline">I design it. Papa builds what I design with a LOT of help from Claude, and then I send it back. It's a system.</p>
       <div class="cc-tabs">
         <a href="ccfarm.html">Overview</a>
         <a href="ccfarm-world.html">The game</a>
@@ -80,6 +80,13 @@
           <p>Short version: Claude Code writes it on the iMac, Blender shapes it, Godot builds it, the NAS hosts it, and the phones play it.</p>
         </div>
 
+        <div class="card legend reveal">
+          <h3>Idea Studio: my app for what comes next</h3>
+          <p>New in November. Idea Studio is an app on my phone (it runs on our NAS) where I develop ideas with Claude, for ccfarm or for a brand-new game, and I can attach pictures. Claude asks me questions and only offers options when I'm stuck. It doesn't name things, doesn't add story, and doesn't write code. It also knows what we learnt building ccfarm, so it can warn me what's easy and what's a nightmare (fancy animations, apparently). I still decide.</p>
+          <p>When an idea's ready, I press <strong>"Write it up for Papa"</strong>. That makes a brief I can edit, and it gets a status: thinking it through, ready for Papa, building, in the game, or parked. Yes, I send Papa briefs.</p>
+          <figure class="shot phone reveal"><img src="img/ccfarm/idea-studio.png" alt="The Idea Studio app on a phone" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Idea Studio.</figcaption></figure>
+        </div>
+
         <div class="section-head reveal">
           <span class="kicker">The tricky bits</span>
           <h2>Stuff that was harder than it looks</h2>
@@ -89,7 +96,7 @@
           <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
             <h3>Keeping two phones on one farm</h3>
             <span class="wf-file">server · SQLite · Tailscale</span>
-            <p class="wf-what">Both phones connect to the game server on the NAS, which keeps the ONE true copy of the farm. If a phone loses the connection, it doesn't quietly carry on by itself any more (that's how Chloe lost an afternoon of decorating, RIP). It keeps what you do, says it's rejoining, and sends it all over once it's back.</p>
+            <p class="wf-what">Both phones connect to the game server on the NAS, which keeps the ONE true copy of the farm. If a phone loses the connection, it doesn't quietly carry on by itself any more (that's how Chloe's decorating got lost, RIP). It keeps what you do, says it's rejoining, and sends it all over once it's back.</p>
             
             <div class="why"><b>Why:</b> if each phone kept its own farm, they'd disagree within about four seconds.</div>
           </div></div>
@@ -120,8 +127,8 @@
         </div>
 
         <div class="card wf-note reveal">
-          <h3>The design / tech split</h3>
-          <p>I write the <strong>design answers</strong> (what the milestones are, what each Pokémon's antic is, whether Mimikyu should be life-size — yes, obviously). The build then hands me back a list of <strong>designer questions</strong>, I answer them, and the next version shows up on my phone by itself. On 8 October I answered 23 in one go. It's basically a very slow group chat with a game engine.</p>
+          <h3>How I run the design</h3>
+          <p>I write the <strong>design answers</strong> (what the milestones are, what each Pokémon's antic is, who leaves the Christmas gift, that Oinkologne is female). Every build comes back with a list of <strong>designer questions</strong>. I answer them, Papa and Claude build the answers, and the next version shows up on my phone by itself. Claude isn't allowed to invent names or story, and anything it fills in while waiting for me is marked provisional until I say yes or no. On 8 October I answered 23 in one go. It's basically a very slow group chat with a game engine.</p>
           <p><strong>Where's the code?</strong> It's closed source for now. Once it's finished, I plan to open source it on <a href="https://github.com/clairehjx" target="_blank" rel="noopener">my GitHub</a>.</p>
         </div>
         <div class="next-page"><a class="btn btn-ghost" href="ccfarm-workshop.html">← The workshop</a><a class="btn btn-primary" href="ccfarm-updates.html">Updates →</a></div>
