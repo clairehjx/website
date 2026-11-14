@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Friends-only soft password gate (runs before paint) -->
+  <script src="gate.js"></script>
+  <title>Tutopia · Claire</title>
+  <meta name="description" content="Tutopia: a family-built AI tutor for Singapore primary-school exams, made by Papa with a very reluctant Claire as chief tester.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ccfarm.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links"><a href="index.html#apps">← Back to my site</a></div>
+    </div>
+  </nav>
+
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">A Papa project (I was involved. Reluctantly.)</span>
+      <h1>Tutopia</h1>
+      <p class="tagline">An AI tutor for PSLE that Papa built at home, for us. I'm the chief tester, which means I do the homework AND find the bugs. This was not my idea. For the record.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="card legend reveal">
+          <h3>What it does</h3>
+          <ul class="play-loop">
+            <li>Real past-year exam questions in maths, science, English and 华文.</li>
+            <li>Answer by typing, speaking, or photographing your working.</li>
+            <li>Instant marking with hints and retries, not just the answer.</li>
+            <li>Oral practice with spoken feedback, listening comprehension and 听写.</li>
+            <li>Composition practice with model essays and a story coach.</li>
+            <li>A daily holiday plan (thanks, I hate it).</li>
+            <li>Pokémon for first-try right answers. This is the only reason I keep going.</li>
+          </ul>
+        </div>
+
+        <div class="card wf-note reveal" style="margin-top:0;margin-bottom:28px;">
+          <h3>Who did what</h3>
+          <p><strong>Papa:</strong> the design, all the building (with Claude Code), the questions and choosing the AI models.</p>
+          <p><strong>Me:</strong> chief tester, very reluctantly. Quite a lot of it came from me using it and complaining. I said graphs were &ldquo;tough to see&rdquo;, so now answers get drawn right onto the graph. I caught marking mistakes. I plan my composition stories with the coach. And when my real school marks came back lower, the science marker got stricter. I accept no responsibility for that.</p>
+        </div>
+
+        <div class="section-head reveal">
+          <span class="kicker">Step by step</span>
+          <h2>How a question goes through it</h2>
+        </div>
+
+        <div class="wf-steps">
+          <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
+            <h3>Real exam papers go in</h3>
+            <span class="wf-file">Claude Code</span>
+            <p class="wf-what">Papa feeds in past-year school exam papers as PDFs. A Claude Code session reads each one, once, and turns it into a question bank: maths, science, English and 华文, P1 to P5. Scanned and sideways pages were a whole saga.</p>
+            
+          </div></div>
+          <div class="wf-step reveal"><span class="num">2</span><div class="wf-card">
+            <h3>It picks what I'm worst at</h3>
+            <span class="wf-file">plain database queries</span>
+            <p class="wf-what">No AI here, just maths. Questions are picked from my weakest topics, and ones I got wrong come back a few days later. Rude, but effective.</p>
+            <figure class="shot phone"><img src="img/tutopia/tutopia-home.png" alt="Tutopia home screen with a What to do next card" loading="lazy"><figcaption>The home screen. It always has an opinion about what I should do next.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">3</span><div class="wf-card">
+            <h3>I answer (typing, talking or a photo)</h3>
+            <span class="wf-file">the question page</span>
+            <p class="wf-what">I can type, speak, or take a photo of my handwritten working. Multiple-choice and fill-in-the-blank are marked by plain code. Anything open-ended goes to an AI marker, along with the paper's real mark scheme.</p>
+            <figure class="shot phone"><img src="img/tutopia/tutopia-science-question.png" alt="A P5 science question with a diagram" loading="lazy"><figcaption>A science question, straight from a real paper.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">4</span><div class="wf-card">
+            <h3>AI marks it like a strict teacher</h3>
+            <span class="wf-file">Gemini · Qwen · Claude</span>
+            <p class="wf-what">It ticks the points I got and crosses the ones I missed, with a hint instead of the answer, and I get retries. If I think it's wrong I can press &ldquo;I think I was right&rdquo;, and a second marker (Claude Opus) looks again. It got stricter after my real school marks came back lower than Tutopia's. Thanks for that.</p>
+            <figure class="shot phone"><img src="img/tutopia/tutopia-ai-feedback.png" alt="AI marking of a science answer: 1 of 2 marks with a hint" loading="lazy"><figcaption>One out of two. The hint is very patient. I am less so.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">5</span><div class="wf-card">
+            <h3>Oral practice that actually listens</h3>
+            <span class="wf-file">speech in, speech out</span>
+            <p class="wf-what">For oral I record myself, and the marker hears the recording itself, not just a transcript, so it notices pronunciation, tones in 华文, and every &ldquo;um&rdquo;. Then it gives me feedback out loud.</p>
+            <figure class="shot phone"><img src="img/tutopia/tutopia-oral.png" alt="English oral practice with a photo and a reading passage" loading="lazy"><figcaption>English oral: look at the picture, read the passage, try not to say &ldquo;um&rdquo;.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">6</span><div class="wf-card">
+            <h3>Compositions and model essays</h3>
+            <span class="wf-file">华文 范文 · story coach</span>
+            <p class="wf-what">There are model essays to learn from, with an English summary you can switch on, and a story coach I use to plan my own composition plots.</p>
+            <figure class="shot phone"><img src="img/tutopia/tutopia-compo.png" alt="A Chinese model essay with an English summary toggle" loading="lazy"><figcaption>A 华文 model essay. Written by AI, checked by more AI.</figcaption></figure>
+          </div></div>
+        </div>
+
+        <div class="section-head reveal" style="margin-top:34px;">
+          <span class="kicker">The models</span>
+          <h2>Which AI does what (and why)</h2>
+        </div>
+        <div class="card legend reveal">
+          <p>Papa doesn't use one AI for everything. Each job gets whichever model did it best in tests: Google's Gemini for English and science, Alibaba's Qwen and friends for maths and 华文 because they're strong at Chinese, and Claude for the trickiest calls. Losers got dropped. Google Veo made videos in the wrong language, and one old essay writer was just too slow.</p>
+          <div class="legend-grid"><div class="legend-item"><strong>Gemini 4 Hydrogen</strong><small>Marks open answers, photos of drawings, English compositions and oral recordings. Accurate, and reads photos and audio.</small></div><div class="legend-item"><strong>Gemini 3.5 Transcribe</strong><small>Word-for-word transcripts, &ldquo;um&rdquo;s included, because fluency counts.</small></div><div class="legend-item"><strong>Gemini 3.8 Flash Lite TTS</strong><small>Reads feedback aloud in the &ldquo;Leda&rdquo; voice, chosen by ear.</small></div><div class="legend-item"><strong>Qwen 3.8 Flash</strong><small>Maths and 华文 marking, handwriting. Same marks as Gemini for maths in about a third of the time.</small></div><div class="legend-item"><strong>Qwen 3.8 Omni Flash</strong><small>Listens to 华文 oral and hears the tones and hesitations.</small></div><div class="legend-item"><strong>DeepSeek V4 Pro + Kimi K3.1 Pro</strong><small>One writes the 华文 model essays and the other reviews them. Both won blind taste tests.</small></div><div class="legend-item"><strong>Qwen Image 3.0 + Wan 3</strong><small>Pictures for oral and comics, and 30-second video clips with Mandarin dialogue.</small></div><div class="legend-item"><strong>Kimi K3</strong><small>The &ldquo;ask the teacher&rdquo; (问老师) chat. It can read photos.</small></div><div class="legend-item"><strong>Claude Sonnet 5.5</strong><small>Story coach, Story Studio, and picking the next question.</small></div><div class="legend-item"><strong>Claude Opus 5.5</strong><small>English model essays, the second opinion when I dispute a mark, and the answer-key audit, which checked about 1,550 science answers and fixed 15.</small></div></div>
+        </div>
+
+        <div class="card legend reveal">
+          <h3>Under the hood</h3>
+          <div class="legend-grid">
+            <div class="legend-item"><strong>Python + FastAPI</strong><small>Plain server-made pages. No fancy front end.</small></div>
+            <div class="legend-item"><strong>SQLite</strong><small>Every question and every attempt, searchable.</small></div>
+            <div class="legend-item"><strong>The home NAS</strong><small>Runs in Docker, reachable only over Tailscale. Family only.</small></div>
+            <div class="legend-item"><strong>983 changes</strong><small>16 Aug to 14 Nov 2026. Papa was busy.</small></div>
+          </div>
+        </div>
+
+        <div class="card wf-note reveal">
+          <h3>Can I use it?</h3>
+          <p>No. It's private and family only, and the code isn't public. Sorry. (Not that sorry.)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made by <strong>Claire</strong> — too much blue watercolour and one perpetually cheerful AI.</p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · still building, still learning.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
