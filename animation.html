@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Friends-only soft password gate (runs before paint) -->
+  <script src="gate.js"></script>
+  <title>Studio Claire · Claire</title>
+  <meta name="description" content="Studio Claire: a 30-second cartoon Claire drew and directed, animated with AI helpers: Procreate, Fable 5.2, Wan 3 and Lyria.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ccfarm.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%234a90d9'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23cfe8ff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html#top"><span class="dot"></span>Claire</a>
+      <div class="nav-links"><a href="index.html#apps">← Back to my site</a></div>
+    </div>
+  </nav>
+
+  <header class="hero wf-hero" id="top">
+    <span class="blob b1"></span>
+    <span class="blob b3"></span>
+    <div class="wrap">
+      <span class="eyebrow">AI animation</span>
+      <h1>Studio Claire<br>presents</h1>
+      <p class="tagline">My first cartoon. I drew it, I wrote the story, I picked the music, and a few AI helpers did the moving-things-around part. Thirty seconds long, which is roughly my attention span.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <figure class="clip phone reveal">
+          <video src="img/animation/studio-claire.mp4" poster="img/animation/studio-claire-poster.jpg" controls playsinline preload="metadata"></video>
+          <figcaption>Sound on. A ghost cat stops for lemonade, the swing cat swings too high and flies off, and a little cat with pink wings saves the day.</figcaption>
+        </figure>
+
+        <div class="card legend reveal">
+          <h3>The story (mine)</h3>
+          <p>A sunny park. An orange cat runs a lemonade stall. A ghost cat (white sheet, black ears, black tail) comes over and buys a drink. Meanwhile a cat on the swing goes higher, and higher, and then off into the sky. Luckily a little grey cat with pink wings is around. Everyone celebrates. Happy ending, obviously. I'm not a monster.</p>
+        </div>
+
+        <div class="section-head reveal">
+          <span class="kicker">Step by step</span>
+          <h2>How I made it</h2>
+        </div>
+
+        <div class="wf-steps">
+          <div class="wf-step reveal"><span class="num">1</span><div class="wf-card">
+            <h3>I drew everything</h3>
+            <span class="wf-file">Procreate on iPad</span>
+            <p class="wf-what">One picture with everything in it: the sky, clouds and birds, the LEMONADE stall, the ghost cat, the winged cat and the swing set. Flat bright colours, thick black outlines. Every shot of the film starts from this drawing.</p>
+            <figure class="shot phone"><img src="img/animation/process-drawing.jpg" alt="Claire's drawing of a park with cats, a lemonade stall and a swing" loading="lazy"><figcaption>The original. All of it, in one picture.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">2</span><div class="wf-card">
+            <h3>I told the story, Fable planned the shots</h3>
+            <span class="wf-file">Claude Fable 5.2</span>
+            <p class="wf-what">I gave Fable my drawing and my story. It split it into three 8-second shots: the ghost cat gets a drink, the swing cat flies off, the winged cat saves it. It only used what I drew. The story and the ending are mine.</p>
+            
+          </div></div>
+          <div class="wf-step reveal"><span class="num">3</span><div class="wf-card">
+            <h3>Wan 3 made it move</h3>
+            <span class="wf-file">Wan 3</span>
+            <p class="wf-what">Each shot was animated starting from the end of the one before, beginning with my drawing, in my style (thick wobbly outlines included). One take per shot, and we kept all three. The swing shot was the trickiest: Wan got excited and zoomed in for a bit.</p>
+            <figure class="shot phone"><img src="img/animation/process-wan-clip.jpg" alt="A frame from the swing shot" loading="lazy"><figcaption>Shot 2, raw from Wan 3. The swing cat, moments before poor decisions.</figcaption></figure>
+          </div></div>
+          <div class="wf-step reveal"><span class="num">4</span><div class="wf-card">
+            <h3>I picked the music</h3>
+            <span class="wf-file">Lyria 3.5</span>
+            <p class="wf-what">I wanted lofi. So the soundtrack is gentle lofi hip-hop for a sweet cartoon: soft drums, warm piano chords, a bit of vinyl crackle. Cosy and happy. The sound effects came from Wan.</p>
+            
+          </div></div>
+          <div class="wf-step reveal"><span class="num">5</span><div class="wf-card">
+            <h3>Stitching it together</h3>
+            <span class="wf-file">titles · joins · ending</span>
+            <p class="wf-what">The three clips were joined on matching frames so it flows as one. At the start, my clouds drift and my birds flap, then a &ldquo;Studio Claire presents&rdquo; card where cartoon me waves from the hill. It ends with an old-school iris-out, because every proper cartoon does.</p>
+            <figure class="shot phone"><img src="img/animation/process-title-card.jpg" alt="Studio Claire presents title card with a cartoon of Claire waving" loading="lazy"><figcaption>The title card. Yes, that's me. Yes, I'm waving.</figcaption></figure>
+          </div></div>
+        </div>
+
+        <div class="card wf-note reveal">
+          <h3>Credits</h3>
+          <p><strong>Claire:</strong> story, drawing, characters, music mood, director. Basically the whole film.</p>
+          <p><strong>My helpers:</strong> Claude Fable 5.2 (shot planning), Wan 3 (animation and sound effects), Lyria 3.5 (music), Qwen Image (cartoon me for the title card), Claude Code (putting it all together).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Made by <strong>Claire</strong> — too much blue watercolour and one perpetually cheerful AI.</p>
+      <p><a href="https://github.com/clairehjx" target="_blank" rel="noopener">github.com/clairehjx</a></p>
+      <p class="small">© <span id="year"></span> Claire · still building, still learning.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
